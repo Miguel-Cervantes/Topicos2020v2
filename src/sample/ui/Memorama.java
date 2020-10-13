@@ -115,9 +115,7 @@ public class Memorama extends Stage implements EventHandler {
                                 if (noPares==7){ x = 2;y = 7; }else{
                                     if (noPares==8){ x = 4;y = 4; }else{
                                         if (noPares==9){ x = 2;y = 9; }else{
-                                            if (noPares==10){ x = 4;y = 5; }else{
-
-                                            }
+                                            x = 4;y = 5;
                                         }
                                     }
                                 }
@@ -169,7 +167,7 @@ public class Memorama extends Stage implements EventHandler {
     private void revolver() {
         for (int i = 0; i <x ; i++) {
             for (int j = 0; j <y ; j++) {
-                arAsignacion[i][j]= new String();
+                arAsignacion[i][j]= "";
             }
         }
         int posx,posy,cont=0;
