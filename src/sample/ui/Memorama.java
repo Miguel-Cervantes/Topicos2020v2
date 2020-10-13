@@ -13,6 +13,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.Random;
 
 import static java.lang.Integer.parseInt;
@@ -98,13 +99,15 @@ public class Memorama extends Stage implements EventHandler {
     public void handle(Event event)
     {
         RevolverAreImagenes();
-        noPares = Integer.parseInt(txtNoTarjetas.getText());
+
+            noPares = Integer.parseInt(txtNoTarjetas.getText());
         if(noPares<2 || noPares>10){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Nímero de Pares Invalido");
             alert.setHeaderText(null);
             alert.setContentText("El valor de pares que ingresaste no el valido para poder jugar"+"\n"+"Intenta otro valor");
             alert.showAndWait();
+
         }else {
             //En construccion----(matriz dinamica segun el valor de parez)------------
             if (noPares == 2) { x = 2; y = 2; } else {
@@ -142,7 +145,7 @@ public class Memorama extends Stage implements EventHandler {
                 int finalJ=j;
                 arTarjetas[i][j].setOnAction(event1 -> verTarjeta(finalI,finalJ));
                 arTarjetas[i][j].setGraphic(imv);
-                arTarjetas[i][j].setPrefSize(80,120);
+                //arTarjetas[i][j].setPrefSize(80,120);
                 gdpMesa.add(arTarjetas[i][j],j,i);
             }
         }
