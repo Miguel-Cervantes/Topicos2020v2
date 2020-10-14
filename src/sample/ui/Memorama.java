@@ -31,7 +31,7 @@ public class Memorama extends Stage implements EventHandler {
     private Scene escena;
 
     private ToolBar tlbMenu;
-    int x=0, y=0, continents =10;
+    int x=0, y=0, continents =0;
 
     public Memorama() {
 
@@ -47,6 +47,11 @@ public class Memorama extends Stage implements EventHandler {
         alert.setHeaderText("Bienvenido al Memorama de MIKE");
         alert.setContentText("Este Memorama se juega con minimo 2 hasta 10 pares"+"\n"+"Diviertete mucho y has un record de menos intentos");
         alert.showAndWait();
+        System.out.print("arreglo de inicial de imagenes de numeros ordedenado");
+        System.out.print("size: "+arImagenes.length+"\n");
+        for (int i = 0; i <arImagenes.length ; i++) {
+            System.out.print(i+".-"+" "+arImagenes[i]+"\n");
+        }System.out.print("\n");
 
         lblTarjetas =new Label("Número de Pares:");
 
@@ -134,14 +139,14 @@ public class Memorama extends Stage implements EventHandler {
                 arTarjetas[i][j].setOnAction(event1 -> verTarjeta(finalI,finalJ));
                 arTarjetas[i][j].setGraphic(imv);
                 //arTarjetas[i][j].setPrefSize(80,120);
-                arTarjetas[i][j].setOnAction(event1 -> CompararTarjetas(finalI,finalJ));//prueba de funcionabilidad
                 gdpMesa.add(arTarjetas[i][j],j,i);
                 gdpMesa.setPrefSize(i,j);
 
+
             }
         }
-
         vBox.getChildren().add(gdpMesa);
+
     }
 
     private void verTarjeta(int finalI, int finalJ) {
@@ -151,39 +156,80 @@ public class Memorama extends Stage implements EventHandler {
         imv.setFitHeight(100);
         imv.setPreserveRatio(true);
         arTarjetas[finalI][finalJ].setGraphic(imv);
-        continents++;// no incrementa el contador de intentos(prueba de contar 1+1+1+1...) y que imprima la cantidad creciendo en el textField
+        CompararTarjetas( finalI,finalJ);
     }
     private void CompararTarjetas(int finalI, int finalJ) {//logica no funcion,a buscar forma de comparar una carta ya volteada con otra recien volteada
-        if(!arAsignacion[finalI][finalI].equals(arAsignacion[finalI][finalI])) {
-            Image img = new Image("sample/assets/pokerReverso.jpg");
-            ImageView imv = new ImageView(img);
-            imv.setFitHeight(100);
-            imv.setPreserveRatio(true);
-            arTarjetas[finalI][finalJ].setGraphic(imv);
-        }else{verTarjeta( finalI,finalJ);}
+        boolean bca =false;
+        String car1="",car2="";
+
+        if(bca==false){
+            car1=arAsignacion[finalI][finalJ];
+            System.out.print("Car1: "+car1+"\n");
+            bca=true;
+        }else{
+            car2=arAsignacion[finalI][finalJ];
+            System.out.print("Car2: "+car2+"\n");
+            bca =false;
+
+            if(car1.equalsIgnoreCase(car2)) {
+                continents++;// no incrementa el contador de intentos(prueba de contar 1+1+1+1...) y que imprima la cantidad creciendo en el textField;}
+                System.out.print("contador: "+continents);
+            }else{
+                Image img = new Image("sample/assets/pokerReverso.jpg");
+                ImageView imv = new ImageView(img);
+                imv.setFitHeight(100);
+                imv.setPreserveRatio(true);
+                arTarjetas[finalI][finalJ].setGraphic(imv);
+                continents++;// no incrementa el contador de intentos(prueba de contar 1+1+1+1...) y que imprima la cantidad creciendo en el textField
+                System.out.print("contador: "+continents);
+            }
+        }
     }
 
     private void revolver() {
-        for (int i = 0; i <x ; i++) {
-            for (int j = 0; j <y ; j++) {
-                arAsignacion[i][j]= "";
+
+        for(int i=0; i<x; i++)
+            for(int j=0; j<y; j++){
+                arAsignacion[i][j] = new String();
             }
-        }
-        int posx,posy,cont=0;
-        for (int i = 0; i <noPares ; i++)
-        {
-            posx=(int)(Math.random()*x);
-            posy=(int)(Math.random()*y);
-            if (arAsignacion[posx][posy].equals("")) {
-                arAsignacion[posx][posy]=arImagenes[i];
+
+        int posx, posy, cont = 0;
+        for(int i=0; i<noPares;){
+            posx = (int)(Math.random() * x);
+            posy = (int)(Math.random() * y);
+            if( arAsignacion[posx][posy].equals("") ){
+                arAsignacion[posx][posy] = arImagenes[i];
                 cont++;
             }
-                if(cont==2){
+
+            if(cont == 2){ // Sirve para comprobar que la imagen se asignó 2 veces
                 i++;
-                cont=0;
+                cont = 0;
             }
         }
     }
+     /*   //----------------------------------
+        System.out.print("matriz de cartas revueltas con espacios en el tablero?\n");
+        for (int i = 0; i < arAsignacion.length; i++) {
+            System.out.print("|");
+            for (int j = 0; j < arAsignacion.length; j++) {
+                System.out.print(arAsignacion[i][j] + ",");
+            }
+            System.out.print("|\n");
+        }
+        //-------------------------------------*/
+
+        /*System.out.print("\n");
+        System.out.print("matriz de cartas revueltas en el tablero?\n");
+        for (int i = 0; i <arAsignacion.length ; i++) {
+            System.out.print("|");
+            for (int j = 0; j <arAsignacion.length ; j++) {
+                System.out.print(arAsignacion[i][j]+",");
+            }
+            System.out.print("|\n");
+        }*/
+
+    //}
     private void RevolverAreImagenes(){
         Random r = new Random();
         for (int i=0; i<arImagenes.length; i++) {
@@ -192,6 +238,11 @@ public class Memorama extends Stage implements EventHandler {
             arImagenes[i] = arImagenes[posAleatoria];
             arImagenes[posAleatoria] = temp;
         }
+        System.out.print("revolver el arreglode imagenes ");
+        System.out.print("size: "+arImagenes.length+"\n");
+        for (int i = 0; i <arImagenes.length ; i++) {
+            System.out.print(i+".-"+" "+arImagenes[i]+"\n");
+        }System.out.print("\n");
     }
 }
 
