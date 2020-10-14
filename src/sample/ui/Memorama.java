@@ -13,10 +13,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.util.Random;
-
-import static java.lang.Integer.parseInt;
 
 public class Memorama extends Stage implements EventHandler {
 
@@ -42,7 +39,6 @@ public class Memorama extends Stage implements EventHandler {
         this.setTitle("Memorama :)");
         this.setScene(escena);
         this.show();
-
     }
 
     private void CrearGUI() {
@@ -109,7 +105,7 @@ public class Memorama extends Stage implements EventHandler {
             alert.showAndWait();
 
         }else {
-            //En construccion----(matriz dinamica segun el valor de parez)------------
+            //En construccion----(Matriz dinamica segun el valor de pares)------------
             if (noPares == 2) { x = 2; y = 2; } else {
                 if (noPares==3){ x = 3;y = 2; }else{
                     if (noPares==4){ x = 2;y = 4; }else{
@@ -119,14 +115,7 @@ public class Memorama extends Stage implements EventHandler {
                                     if (noPares==8){ x = 4;y = 4; }else{
                                         if (noPares==9){ x = 2;y = 9; }else{
                                             x = 4;y = 5;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+                                        } } } } } } } }
             //---------------------------------
         }
         vBox.getChildren().remove(gdpMesa);
@@ -198,4 +187,4 @@ public class Memorama extends Stage implements EventHandler {
         }
     }
 }
-//
+
