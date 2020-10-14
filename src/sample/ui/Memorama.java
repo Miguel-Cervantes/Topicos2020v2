@@ -132,12 +132,13 @@ public class Memorama extends Stage implements EventHandler {
                 int finalI=i;
                 int finalJ=j;
                 arTarjetas[i][j].setOnAction(event1 -> verTarjeta(finalI,finalJ));
-                continents++;
                 arTarjetas[i][j].setGraphic(imv);
                 //arTarjetas[i][j].setPrefSize(80,120);
+                arTarjetas[i][j].setOnAction(event1 -> CompararTarjetas(finalI,finalJ));//prueba de funcionabilidad
                 gdpMesa.add(arTarjetas[i][j],j,i);
             }
         }
+
         vBox.getChildren().add(gdpMesa);
     }
 
@@ -148,16 +149,17 @@ public class Memorama extends Stage implements EventHandler {
         imv.setFitHeight(100);
         imv.setPreserveRatio(true);
         arTarjetas[finalI][finalJ].setGraphic(imv);
+        continents++;// no incrementa el contador de intentos(prueba de contar 1+1+1+1...) y que imprima la cantidad creciendo en el textField
     }
-    /*private void CompararTarjetas(int finalI, int finalJ) {
-        if() {
+    private void CompararTarjetas(int finalI, int finalJ) {//logica no funcion,a buscar forma de comparar una carta ya volteada con otra recien volteada
+        if(!arAsignacion[finalI][finalI].equals(arAsignacion[finalI][finalI])) {
             Image img = new Image("sample/assets/pokerReverso.jpg");
             ImageView imv = new ImageView(img);
             imv.setFitHeight(100);
             imv.setPreserveRatio(true);
             arTarjetas[finalI][finalJ].setGraphic(imv);
-        }else{}
-    }*/
+        }else{verTarjeta( finalI,finalJ);}
+    }
 
     private void revolver() {
         for (int i = 0; i <x ; i++) {
