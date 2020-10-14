@@ -45,7 +45,7 @@ public class Memorama extends Stage implements EventHandler {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Hora de Jugar!");
         alert.setHeaderText("Bienvenido al Memorama de MIKE");
-        alert.setContentText("Este Memorama esta hecho para jugar con minimo 2 hasta 10 pares"+"\n"+"Diviertete mucho y has un record de menos intentos");
+        alert.setContentText("Este Memorama se juega con minimo 2 hasta 10 pares"+"\n"+"Diviertete mucho y has un record de menos intentos");
         alert.showAndWait();
 
         lblTarjetas =new Label("Número de Pares:");
@@ -136,6 +136,8 @@ public class Memorama extends Stage implements EventHandler {
                 //arTarjetas[i][j].setPrefSize(80,120);
                 arTarjetas[i][j].setOnAction(event1 -> CompararTarjetas(finalI,finalJ));//prueba de funcionabilidad
                 gdpMesa.add(arTarjetas[i][j],j,i);
+                gdpMesa.setPrefSize(i,j);
+
             }
         }
 
