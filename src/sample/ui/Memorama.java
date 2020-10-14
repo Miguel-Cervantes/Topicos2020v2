@@ -31,7 +31,7 @@ public class Memorama extends Stage implements EventHandler {
     private Scene escena;
 
     private ToolBar tlbMenu;
-    int x=0; int y=0;
+    int x=0; int y=0; int cont=0;
 
     public Memorama() {
 
@@ -48,7 +48,6 @@ public class Memorama extends Stage implements EventHandler {
         alert.setContentText("Este Memorama esta hecho para jugar con minimo 2 hasta 10 pares"+"\n"+"Diviertete mucho y has un record de menos intentos");
         alert.showAndWait();
 
-        int cont=0;
         lblTarjetas =new Label("Número de Pares:");
 
         txtNoTarjetas = new TextField();
@@ -147,14 +146,17 @@ public class Memorama extends Stage implements EventHandler {
         imv.setFitHeight(100);
         imv.setPreserveRatio(true);
         arTarjetas[finalI][finalJ].setGraphic(imv);
+        cont++;
     }
-    private void voltearTarjeta(int finalI, int finalJ) {
-        Image img=new Image("sample/assets/pokerReverso.jpg");
-        ImageView imv=new ImageView(img);
-        imv.setFitHeight(100);
-        imv.setPreserveRatio(true);
-        arTarjetas[finalI][finalJ].setGraphic(imv);
-    }
+    /*private void CompararTarjetas(int finalI, int finalJ) {
+        if() {
+            Image img = new Image("sample/assets/pokerReverso.jpg");
+            ImageView imv = new ImageView(img);
+            imv.setFitHeight(100);
+            imv.setPreserveRatio(true);
+            arTarjetas[finalI][finalJ].setGraphic(imv);
+        }else{}
+    }*/
 
     private void revolver() {
         for (int i = 0; i <x ; i++) {
