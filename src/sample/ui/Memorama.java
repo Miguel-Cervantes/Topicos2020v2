@@ -31,7 +31,7 @@ public class Memorama extends Stage implements EventHandler {
     private Scene escena;
 
     private ToolBar tlbMenu;
-    int x=0; int y=0; int cont=0;
+    int x=0, y=0, continents =10;
 
     public Memorama() {
 
@@ -62,7 +62,7 @@ public class Memorama extends Stage implements EventHandler {
         txtcontador =new TextField();
         txtcontador.setPrefWidth(40);
         txtcontador.setEditable(false);
-        txtcontador.setText(Integer.toString(cont));
+        txtcontador.setText(Integer.toString(continents));
 
         btnRegresar.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             Node source = (Node) event.getSource();
@@ -98,7 +98,7 @@ public class Memorama extends Stage implements EventHandler {
             noPares = Integer.parseInt(txtNoTarjetas.getText());
         if(noPares<2 || noPares>10){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Nímero de Pares Invalido");
+            alert.setTitle("Número de Pares Invalido");
             alert.setHeaderText(null);
             alert.setContentText("El valor de pares que ingresaste no el valido para poder jugar"+"\n"+"Intenta otro valor");
             alert.showAndWait();
@@ -132,6 +132,7 @@ public class Memorama extends Stage implements EventHandler {
                 int finalI=i;
                 int finalJ=j;
                 arTarjetas[i][j].setOnAction(event1 -> verTarjeta(finalI,finalJ));
+                continents++;
                 arTarjetas[i][j].setGraphic(imv);
                 //arTarjetas[i][j].setPrefSize(80,120);
                 gdpMesa.add(arTarjetas[i][j],j,i);
@@ -141,12 +142,12 @@ public class Memorama extends Stage implements EventHandler {
     }
 
     private void verTarjeta(int finalI, int finalJ) {
+
         Image img=new Image("sample/assets/"+arAsignacion[finalI][finalJ]);
         ImageView imv=new ImageView(img);
         imv.setFitHeight(100);
         imv.setPreserveRatio(true);
         arTarjetas[finalI][finalJ].setGraphic(imv);
-        cont++;
     }
     /*private void CompararTarjetas(int finalI, int finalJ) {
         if() {
