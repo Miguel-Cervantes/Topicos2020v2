@@ -160,39 +160,45 @@ public class Memorama extends Stage implements EventHandler {
         CompararTarjetas( finalI,finalJ);
     }
     private void CompararTarjetas(int finalI, int finalJ) {//logica no funciona
-
         String car1="",car2="";
 
         if(bca==false){
             car1=arAsignacion[finalI][finalJ];
             System.out.print("Car1: "+car1+"\n");
+            System.out.print("finalI: "+finalI+"    finalJ: "+finalJ+"\n");
             c1x=finalI; c1y=finalJ;
+            System.out.print("c1x: "+c1x+"  c1y: "+c1y+"\n");
+            System.out.print(""+arAsignacion[c1x][c1y]+"\n\n");
             bca=true;
         }else{
             car2=arAsignacion[finalI][finalJ];
             System.out.print("Car2: "+car2+"\n");
+            System.out.print("finalI: "+finalI+"    finalJ: "+finalJ+"\n");
             c2x=finalI; c2y=finalJ;
-            /*if(car1.equalsIgnoreCase(car2)) {
+            System.out.print("c2x: "+c2x+"  c2y :"+c2y+"\n");
 
+            if(car1.equalsIgnoreCase(car2)) {
 
                 continents++;
-                System.out.print("contador: "+continents+"\n");
-                c1x=0,c1y=0,c2x=0,c2x=0;
+                System.out.print("contador: "+continents+"\n\n");
             }else{
-                Espera(1);
+                Espera(2);
                 Image img = new Image("sample/assets/pokerReverso.jpg");
                 ImageView imv = new ImageView(img);
                 imv.setFitHeight(100);
                 imv.setPreserveRatio(true);
-                arTarjetas[c1x][c1y].setGraphic(imv);
+                //arTarjetas[c1x][c1y].setGraphic(imv);
                 arTarjetas[c2x][c2y].setGraphic(imv);
-
+                //LLAMA METODOS PARA PODER TAPAR Y DESTAPAR LAS CARTAS Y ARREGLA EL COTADOR Y
+                // UN CONTADOR DE PARES IGUALES COMPARADA CON EL NUMERO DE PARES TOTALES ELEGIDOS Y
+                // CUANDO LLEGUE A ESE NUMERO EL JUEGO ESTA TERMINADO PONER
+                // UN AVISO ALERT AL INICIO DE IF QUE IGUALDAD PARA AVISAR AL USUARIO QUE ENCONTRO UN PAR
+                //
 
                 continents++;
-                System.out.print("contador: "+continents+"\n");
-                c1x=0,c1y=0,c2x=0,c2x=0;
-            }*/
+                System.out.print("contador: "+continents+"\n\n");
 
+            }
             bca =false;
         }
     }
