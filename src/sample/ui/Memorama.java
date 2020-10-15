@@ -31,7 +31,7 @@ public class Memorama extends Stage implements EventHandler {
     private Scene escena;
 
     private ToolBar tlbMenu;
-    int x=0, y=0, continents =0;
+    int x=0, y=0, continents =0;  int c1x=0; int c1y=0; int c2x=0; int c2y=0;
     boolean bca =false;
 
     public Memorama() {
@@ -159,26 +159,26 @@ public class Memorama extends Stage implements EventHandler {
         arTarjetas[finalI][finalJ].setGraphic(imv);
         CompararTarjetas( finalI,finalJ);
     }
-    private void CompararTarjetas(int finalI, int finalJ) {//logica no funcion,a buscar forma de comparar una carta ya volteada con otra recien volteada
+    private void CompararTarjetas(int finalI, int finalJ) {//logica no funciona
 
         String car1="",car2="";
-        int c1x=finalI; int c1y=finalJ;
 
         if(bca==false){
             car1=arAsignacion[finalI][finalJ];
             System.out.print("Car1: "+car1+"\n");
+            c1x=finalI; c1y=finalJ;
             bca=true;
         }else{
             car2=arAsignacion[finalI][finalJ];
             System.out.print("Car2: "+car2+"\n");
-            int c2x=finalI; int c2y=finalJ;
-            bca =false;
+            c2x=finalI; c2y=finalJ;
+            /*if(car1.equalsIgnoreCase(car2)) {
 
-            if(car1.equalsIgnoreCase(car2)) {
-                this.continents++;// no incrementa el contador de intentos(prueba de contar 1+1+1+1...) y que imprima la cantidad creciendo en el textField;}
+
+                continents++;
                 System.out.print("contador: "+continents+"\n");
+                c1x=0,c1y=0,c2x=0,c2x=0;
             }else{
-
                 Espera(1);
                 Image img = new Image("sample/assets/pokerReverso.jpg");
                 ImageView imv = new ImageView(img);
@@ -186,9 +186,14 @@ public class Memorama extends Stage implements EventHandler {
                 imv.setPreserveRatio(true);
                 arTarjetas[c1x][c1y].setGraphic(imv);
                 arTarjetas[c2x][c2y].setGraphic(imv);
-                this.continents++;// no incrementa el contador de intentos(prueba de contar 1+1+1+1...) y que imprima la cantidad creciendo en el textField
+
+
+                continents++;
                 System.out.print("contador: "+continents+"\n");
-            }
+                c1x=0,c1y=0,c2x=0,c2x=0;
+            }*/
+
+            bca =false;
         }
     }
 
