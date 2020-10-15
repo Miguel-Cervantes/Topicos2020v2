@@ -32,6 +32,7 @@ public class Memorama extends Stage implements EventHandler {
 
     private ToolBar tlbMenu;
     int x=0, y=0, continents =0;
+    boolean bca =false;
 
     public Memorama() {
 
@@ -67,7 +68,7 @@ public class Memorama extends Stage implements EventHandler {
         txtcontador =new TextField();
         txtcontador.setPrefWidth(40);
         txtcontador.setEditable(false);
-        txtcontador.setText(Integer.toString(continents));
+        txtcontador.setText(Integer.toString(this.continents));
 
         btnRegresar.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             Node source = (Node) event.getSource();
@@ -159,8 +160,9 @@ public class Memorama extends Stage implements EventHandler {
         CompararTarjetas( finalI,finalJ);
     }
     private void CompararTarjetas(int finalI, int finalJ) {//logica no funcion,a buscar forma de comparar una carta ya volteada con otra recien volteada
-        boolean bca =false;
+
         String car1="",car2="";
+        int c1x=finalI; int c1y=finalJ;
 
         if(bca==false){
             car1=arAsignacion[finalI][finalJ];
@@ -169,19 +171,23 @@ public class Memorama extends Stage implements EventHandler {
         }else{
             car2=arAsignacion[finalI][finalJ];
             System.out.print("Car2: "+car2+"\n");
+            int c2x=finalI; int c2y=finalJ;
             bca =false;
 
             if(car1.equalsIgnoreCase(car2)) {
-                continents++;// no incrementa el contador de intentos(prueba de contar 1+1+1+1...) y que imprima la cantidad creciendo en el textField;}
-                System.out.print("contador: "+continents);
+                this.continents++;// no incrementa el contador de intentos(prueba de contar 1+1+1+1...) y que imprima la cantidad creciendo en el textField;}
+                System.out.print("contador: "+continents+"\n");
             }else{
+
+                Espera(1);
                 Image img = new Image("sample/assets/pokerReverso.jpg");
                 ImageView imv = new ImageView(img);
                 imv.setFitHeight(100);
                 imv.setPreserveRatio(true);
-                arTarjetas[finalI][finalJ].setGraphic(imv);
-                continents++;// no incrementa el contador de intentos(prueba de contar 1+1+1+1...) y que imprima la cantidad creciendo en el textField
-                System.out.print("contador: "+continents);
+                arTarjetas[c1x][c1y].setGraphic(imv);
+                arTarjetas[c2x][c2y].setGraphic(imv);
+                this.continents++;// no incrementa el contador de intentos(prueba de contar 1+1+1+1...) y que imprima la cantidad creciendo en el textField
+                System.out.print("contador: "+continents+"\n");
             }
         }
     }
@@ -208,28 +214,7 @@ public class Memorama extends Stage implements EventHandler {
             }
         }
     }
-     /*   //----------------------------------
-        System.out.print("matriz de cartas revueltas con espacios en el tablero?\n");
-        for (int i = 0; i < arAsignacion.length; i++) {
-            System.out.print("|");
-            for (int j = 0; j < arAsignacion.length; j++) {
-                System.out.print(arAsignacion[i][j] + ",");
-            }
-            System.out.print("|\n");
-        }
-        //-------------------------------------*/
 
-        /*System.out.print("\n");
-        System.out.print("matriz de cartas revueltas en el tablero?\n");
-        for (int i = 0; i <arAsignacion.length ; i++) {
-            System.out.print("|");
-            for (int j = 0; j <arAsignacion.length ; j++) {
-                System.out.print(arAsignacion[i][j]+",");
-            }
-            System.out.print("|\n");
-        }*/
-
-    //}
     private void RevolverAreImagenes(){
         Random r = new Random();
         for (int i=0; i<arImagenes.length; i++) {
@@ -243,6 +228,14 @@ public class Memorama extends Stage implements EventHandler {
         for (int i = 0; i <arImagenes.length ; i++) {
             System.out.print(i+".-"+" "+arImagenes[i]+"\n");
         }System.out.print("\n");
+    }
+
+    void Espera(int seg){
+        try {
+            Thread.sleep(seg * 1000);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 }
 
