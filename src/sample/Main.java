@@ -86,6 +86,7 @@ public class Main extends Application implements EventHandler<WindowEvent>
             vPrincipal = new VBox();
             vPrincipal.getChildren().addAll(mnbProyecto,tlbMenu);
             escena = new Scene(vPrincipal,300,200);
+            escena.getStylesheets().add("../assets/main_styles.css");
 
     }
 

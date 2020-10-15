@@ -141,8 +141,6 @@ public class Memorama extends Stage implements EventHandler {
                 arTarjetas[i][j].setGraphic(imv);
                 //arTarjetas[i][j].setPrefSize(80,120);
                 gdpMesa.add(arTarjetas[i][j],j,i);
-                gdpMesa.setPrefSize(i,j);
-
 
             }
         }
@@ -157,47 +155,48 @@ public class Memorama extends Stage implements EventHandler {
         imv.setFitHeight(100);
         imv.setPreserveRatio(true);
         arTarjetas[finalI][finalJ].setGraphic(imv);
-        CompararTarjetas( finalI,finalJ);
+        CompararTarjetas( finalI, finalJ);
     }
     private void CompararTarjetas(int finalI, int finalJ) {//logica no funciona
-        String car1="",car2="";
+        String car1="",car2;
+        int pares=0;
 
-        if(bca==false){
+        if(!bca){
             car1=arAsignacion[finalI][finalJ];
+
             System.out.print("Car1: "+car1+"\n");
             System.out.print("finalI: "+finalI+"    finalJ: "+finalJ+"\n");
             c1x=finalI; c1y=finalJ;
             System.out.print("c1x: "+c1x+"  c1y: "+c1y+"\n");
             System.out.print(""+arAsignacion[c1x][c1y]+"\n\n");
+
             bca=true;
         }else{
             car2=arAsignacion[finalI][finalJ];
+
             System.out.print("Car2: "+car2+"\n");
             System.out.print("finalI: "+finalI+"    finalJ: "+finalJ+"\n");
             c2x=finalI; c2y=finalJ;
             System.out.print("c2x: "+c2x+"  c2y :"+c2y+"\n");
 
+
             if(car1.equalsIgnoreCase(car2)) {
-
                 continents++;
                 System.out.print("contador: "+continents+"\n\n");
+                pares++;
+                if(pares==noPares){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Juego Terminado");
+                    alert.setHeaderText("Felicitaciones por encontar todos los pareS!!");
+                    alert.setContentText("Tuviste "+pares+" Vuelve y rompe tu record!!");
+                    alert.showAndWait();
+                }
             }else{
-                Espera(2);
-                Image img = new Image("sample/assets/pokerReverso.jpg");
-                ImageView imv = new ImageView(img);
-                imv.setFitHeight(100);
-                imv.setPreserveRatio(true);
-                //arTarjetas[c1x][c1y].setGraphic(imv);
-                arTarjetas[c2x][c2y].setGraphic(imv);
-                //LLAMA METODOS PARA PODER TAPAR Y DESTAPAR LAS CARTAS Y ARREGLA EL COTADOR Y
-                // UN CONTADOR DE PARES IGUALES COMPARADA CON EL NUMERO DE PARES TOTALES ELEGIDOS Y
-                // CUANDO LLEGUE A ESE NUMERO EL JUEGO ESTA TERMINADO PONER
-                // UN AVISO ALERT AL INICIO DE IF QUE IGUALDAD PARA AVISAR AL USUARIO QUE ENCONTRO UN PAR
-                //
-
                 continents++;
                 System.out.print("contador: "+continents+"\n\n");
-
+                Espera(1);
+                OcultverTarjeta(c1x,c1y);
+                OcultverTarjeta(c2x,c2y);
             }
             bca =false;
         }
@@ -207,7 +206,7 @@ public class Memorama extends Stage implements EventHandler {
 
         for(int i=0; i<x; i++)
             for(int j=0; j<y; j++){
-                arAsignacion[i][j] = new String();
+                arAsignacion[i][j] = "";
             }
 
         int posx, posy, cont = 0;
@@ -240,6 +239,28 @@ public class Memorama extends Stage implements EventHandler {
             System.out.print(i+".-"+" "+arImagenes[i]+"\n");
         }System.out.print("\n");
     }
+    /*private void ComverTarjeta(int finalI, int finalJ) {
+
+        Image img=new Image("sample/assets/"+arAsignacion[finalI][finalJ]);
+        ImageView imv=new ImageView(img);
+        imv.setFitHeight(100);
+        imv.setPreserveRatio(true);
+        arTarjetas[finalI][finalJ].setGraphic(imv);
+        arTarjetas[i][j].setGraphic(imv);
+        gdpMesa.add(arTarjetas[i][j],j,i);
+    }*/
+    private void OcultverTarjeta( int c1x, int c1y) {
+
+        Image img=new Image("sample/assets/pokerReverso.jpg");
+        ImageView imv=new ImageView(img);
+        imv.setFitHeight(100);
+        imv.setPreserveRatio(true);
+        //arTarjetas[i][j]= new Button();
+        arTarjetas[c1x][c1y].setGraphic(imv);
+        gdpMesa.add(arTarjetas[c1x][c1y],c1x,c1y);
+    }
+
+
 
     void Espera(int seg){
         try {
