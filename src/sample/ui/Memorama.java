@@ -62,7 +62,7 @@ public class Memorama extends Stage implements EventHandler {
         txtNoTarjetas.setPrefWidth(40);
 
         btnAceptar = new Button("Jugar!!");
-        btnRegresar=new Button("Menu Principal");
+        btnRegresar=new Button("Menu");
         btnLimpiar=new Button("limpiar");
 
         lblContador=new Label("Intentos: ");
@@ -70,7 +70,7 @@ public class Memorama extends Stage implements EventHandler {
         txtcontador =new TextField();
         txtcontador.setPrefWidth(40);
         txtcontador.setEditable(false);
-        txtcontador.setText(Integer.toString(this.continents));
+        txtcontador.setText(Integer.toString(continents));
 
         btnRegresar.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             Node source = (Node) event.getSource();
@@ -96,7 +96,9 @@ public class Memorama extends Stage implements EventHandler {
         tlbMenu.getItems().addAll(lblContador,txtcontador);
         vBox=new VBox();
         vBox.getChildren().addAll(hBox,gdpMesa,tlbMenu);
-        escena =new Scene(vBox,500,500);
+
+        escena =new Scene(vBox,700,500);
+
     }
     @Override
     public void handle(Event event)
@@ -156,36 +158,36 @@ public class Memorama extends Stage implements EventHandler {
         imv.setFitHeight(100);
         imv.setPreserveRatio(true);
         arTarjetas[finalI][finalJ].setGraphic(imv);
-        //CompararTarjetas( finalI, finalJ);
         CompararTarjetas( finalI, finalJ);
     }
-    private void CompararTarjetas(int finalI, int finalJ) {//logica no funciona
+    private void CompararTarjetas(int finalI, int finalJ) {
         String car2;
 
-        if(!bca){
-            car1=arAsignacion[finalI][finalJ];
+        if (!bca) {
+            car1 = arAsignacion[finalI][finalJ];
 
-            System.out.print("Car1: "+car1+"\n");
-            System.out.print("finalI: "+finalI+"    finalJ: "+finalJ+"\n");
-            c1x=finalI; c1y=finalJ;
-            System.out.print("c1x: "+c1x+"  c1y: "+c1y+"\n");
-            System.out.print(""+arAsignacion[c1x][c1y]+"\n\n");
+            System.out.print("Car1: " + car1 + "\n");
+            System.out.print("finalI: " + finalI + "    finalJ: " + finalJ + "\n");
+            c1x = finalI;
+            c1y = finalJ;
+            System.out.print("c1x: " + c1x + "  c1y: " + c1y + "\n");
+            System.out.print("" + arAsignacion[c1x][c1y] + "\n\n");
 
-            bca=true;
-        }else{
-            bca =false;
-            car2=arAsignacion[finalI][finalJ];
+            bca = true;
+        } else {
+            bca = false;
+            car2 = arAsignacion[finalI][finalJ];
 
-            System.out.print("Car2: "+car2+"\n");
-            System.out.print("finalI: "+finalI+"    finalJ: "+finalJ+"\n");
-            c2x=finalI; c2y=finalJ;
-            System.out.print("c2x: "+c2x+"  c2y :"+c2y+"\n");
+            System.out.print("Car2: " + car2 + "\n");
+            System.out.print("finalI: " + finalI + "    finalJ: " + finalJ + "\n");
+            c2x = finalI;
+            c2y = finalJ;
+            System.out.print("c2x: " + c2x + "  c2y :" + c2y + "\n");
 
-
-            if(car1.compareToIgnoreCase(car2)==0) {//!car1.equalsIgnoreCase(car2)
-                continents++;
+            if (car1.compareToIgnoreCase(car2) == 0) {
+                this.continents++;
                 System.out.print("contador: " + continents + "\n\n");
-                pares=pares+1;
+                pares = pares + 1;
                 System.out.print("PARES ENCONTRADOS: " + pares + "\n");
 
                 Alert alert3 = new Alert(Alert.AlertType.INFORMATION);
@@ -198,19 +200,17 @@ public class Memorama extends Stage implements EventHandler {
                     Alert alert4 = new Alert(Alert.AlertType.INFORMATION);
                     alert4.setTitle("Juego Terminado");
                     alert4.setHeaderText("Felicitaciones por encontar todos los pares!!");
-                    alert4.setContentText("Tuviste " + pares + " Vuelve y rompe tu record!!");
+                    alert4.setContentText("Tuviste " + continents + " intentos Vuelve y rompe tu record!!");
                     alert4.showAndWait();
                 }
-            }else {
-                continents++;
+            } else {
+                this.continents++;
                 System.out.print("contador: " + continents + "\n\n");
-                Espera(1);
                 OcultarTarjetaU(c1x, c1y);
-
                 OcultarTarjetaD(c2x, c2y);
             }
-
         }
+
     }
     private void revolver() {
 
@@ -226,7 +226,7 @@ public class Memorama extends Stage implements EventHandler {
                 arAsignacion[posx][posy] = arImagenes[ii];
                 cont++;
             }
-            if(cont == 2){ // Sirve para comprobar que la imagen se asignó 2 veces
+            if(cont == 2){
                 ii++;
                 cont = 0;
             }
@@ -253,16 +253,14 @@ public class Memorama extends Stage implements EventHandler {
         ImageView imvOU=new ImageView(imgOU);
         imvOU.setFitHeight(100);
         imvOU.setPreserveRatio(true);
-        //arTarjetas[c1x][c1y]= new Button();
         arTarjetas[c1x][c1y].setGraphic(imvOU);
     }
     private void OcultarTarjetaD( int c2x, int c2y) {
-
+        Espera(1);
         Image imgOD=new Image("sample/assets/pokerReverso.jpg");
         ImageView imvOD=new ImageView(imgOD);
         imvOD.setFitHeight(100);
         imvOD.setPreserveRatio(true);
-        //arTarjetas[c2x][c2y]= new Button();
         arTarjetas[c2x][c2y].setGraphic(imvOD);
     }
 
