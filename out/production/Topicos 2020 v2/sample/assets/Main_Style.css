@@ -1,0 +1,28 @@
+
+.root
+{
+    //-fx-background-image: url("http://www.baltana.com/files/wallpapers-7/Brooklyn-Bridge-Black-And-White-Best-Wallpaper-23387.jpg");
+    //-fx-background-image: url("https://wallpapercave.com/wp/wp2239287.jpg");
+    -fx-background-image: url("https://2.bp.blogspot.com/-bXrSrE4i-c0/XKWyJK-CPQI/AAAAAAAACLo/pxEZQAK4Dy8sHMuZDt3KzH5zxIZ8Xw9kwCLcBGAs/s1600/agujero-negro.jpg");
+    -fx-background-size: cover,auto;
+
+}
+
+.menu-bar
+    {
+     //-fx-background-color: #e3f2fd;
+       -fx-background-color: #80cbc4;
+       -fx-border-color: #78909c;
+       //-fx-border-width: 1;
+    }
+
+
+
+
+/*.root{
+   // -fx-background-image : url("https://www.bbva.com/wp-content/uploads/2018/03/recurso-agujero-negro-BBVA-e1521630497593.jpg");
+   -fx-background-image : url("https://2.bp.blogspot.com/-bXrSrE4i-c0/XKWyJK-CPQI/AAAAAAAACLo/pxEZQAK4Dy8sHMuZDt3KzH5zxIZ8Xw9kwCLcBGAs/s1600/agujero-negro.jpg");
+    -fx-background-size: cover,auto;
+  /*  -fx-background-repeat: no-repeat;
+//  -fx-background-position: center;*/
+}*/

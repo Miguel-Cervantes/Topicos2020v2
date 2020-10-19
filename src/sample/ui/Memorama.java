@@ -32,6 +32,8 @@ public class Memorama extends Stage implements EventHandler {
 
     private ToolBar tlbMenu;
     int x=0, y=0, continents =0;  int c1x=0; int c1y=0; int c2x=0; int c2y=0;
+    String car1;
+    int pares=0;
     boolean bca =false;
 
     public Memorama() {
@@ -43,15 +45,15 @@ public class Memorama extends Stage implements EventHandler {
     }
 
     private void CrearGUI() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Hora de Jugar!");
-        alert.setHeaderText("Bienvenido al Memorama de MIKE");
-        alert.setContentText("Este Memorama se juega con minimo 2 hasta 10 pares"+"\n"+"Diviertete mucho y has un record de menos intentos");
-        alert.showAndWait();
+        Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+        alert1.setTitle("Hora de Jugar!");
+        alert1.setHeaderText("Bienvenido al Memorama de MIKE");
+        alert1.setContentText("Este Memorama se juega con minimo 2 hasta 10 pares"+"\n"+"Diviertete mucho y has un record de menos intentos");
+        alert1.showAndWait();
         System.out.print("arreglo de inicial de imagenes de numeros ordedenado");
         System.out.print("size: "+arImagenes.length+"\n");
-        for (int i = 0; i <arImagenes.length ; i++) {
-            System.out.print(i+".-"+" "+arImagenes[i]+"\n");
+        for (int ii = 0; ii <arImagenes.length ; ii++) {
+            System.out.print(ii+".-"+" "+arImagenes[ii]+"\n");
         }System.out.print("\n");
 
         lblTarjetas =new Label("Número de Pares:");
@@ -103,11 +105,11 @@ public class Memorama extends Stage implements EventHandler {
 
             noPares = Integer.parseInt(txtNoTarjetas.getText());
         if(noPares<2 || noPares>10){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Número de Pares Invalido");
-            alert.setHeaderText(null);
-            alert.setContentText("El valor de pares que ingresaste no el valido para poder jugar"+"\n"+"Intenta otro valor");
-            alert.showAndWait();
+            Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
+            alert2.setTitle("Número de Pares Invalido");
+            alert2.setHeaderText(null);
+            alert2.setContentText("El valor de pares que ingresaste no el valido para poder jugar"+"\n"+"Intenta otro valor");
+            alert2.showAndWait();
 
         }else {
             //En construccion----(Matriz dinamica segun el valor de pares)------------
@@ -141,7 +143,6 @@ public class Memorama extends Stage implements EventHandler {
                 arTarjetas[i][j].setGraphic(imv);
                 //arTarjetas[i][j].setPrefSize(80,120);
                 gdpMesa.add(arTarjetas[i][j],j,i);
-
             }
         }
         vBox.getChildren().add(gdpMesa);
@@ -155,11 +156,11 @@ public class Memorama extends Stage implements EventHandler {
         imv.setFitHeight(100);
         imv.setPreserveRatio(true);
         arTarjetas[finalI][finalJ].setGraphic(imv);
+        //CompararTarjetas( finalI, finalJ);
         CompararTarjetas( finalI, finalJ);
     }
     private void CompararTarjetas(int finalI, int finalJ) {//logica no funciona
-        String car1="",car2;
-        int pares=0;
+        String car2;
 
         if(!bca){
             car1=arAsignacion[finalI][finalJ];
@@ -172,6 +173,7 @@ public class Memorama extends Stage implements EventHandler {
 
             bca=true;
         }else{
+            bca =false;
             car2=arAsignacion[finalI][finalJ];
 
             System.out.print("Car2: "+car2+"\n");
@@ -180,46 +182,52 @@ public class Memorama extends Stage implements EventHandler {
             System.out.print("c2x: "+c2x+"  c2y :"+c2y+"\n");
 
 
-            if(car1.equalsIgnoreCase(car2)) {
+            if(car1.compareToIgnoreCase(car2)==0) {//!car1.equalsIgnoreCase(car2)
                 continents++;
-                System.out.print("contador: "+continents+"\n\n");
-                pares++;
-                if(pares==noPares){
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Juego Terminado");
-                    alert.setHeaderText("Felicitaciones por encontar todos los pareS!!");
-                    alert.setContentText("Tuviste "+pares+" Vuelve y rompe tu record!!");
-                    alert.showAndWait();
+                System.out.print("contador: " + continents + "\n\n");
+                pares=pares+1;
+                System.out.print("PARES ENCONTRADOS: " + pares + "\n");
+
+                Alert alert3 = new Alert(Alert.AlertType.INFORMATION);
+                alert3.setTitle("Felcidades!!");
+                alert3.setHeaderText(null);
+                alert3.setContentText("Le atinaste a un par!!");
+                alert3.showAndWait();
+
+                if (pares == noPares) {
+                    Alert alert4 = new Alert(Alert.AlertType.INFORMATION);
+                    alert4.setTitle("Juego Terminado");
+                    alert4.setHeaderText("Felicitaciones por encontar todos los pares!!");
+                    alert4.setContentText("Tuviste " + pares + " Vuelve y rompe tu record!!");
+                    alert4.showAndWait();
                 }
-            }else{
+            }else {
                 continents++;
-                System.out.print("contador: "+continents+"\n\n");
+                System.out.print("contador: " + continents + "\n\n");
                 Espera(1);
-                OcultverTarjeta(c1x,c1y);
-                OcultverTarjeta(c2x,c2y);
+                OcultarTarjetaU(c1x, c1y);
+
+                OcultarTarjetaD(c2x, c2y);
             }
-            bca =false;
+
         }
     }
-
     private void revolver() {
 
-        for(int i=0; i<x; i++)
-            for(int j=0; j<y; j++){
-                arAsignacion[i][j] = "";
+        for(int ii=0; ii<x; ii++)
+            for(int jj=0; jj<y; jj++){
+                arAsignacion[ii][jj] = "";
             }
-
         int posx, posy, cont = 0;
-        for(int i=0; i<noPares;){
+        for(int ii=0; ii<noPares;){
             posx = (int)(Math.random() * x);
             posy = (int)(Math.random() * y);
             if( arAsignacion[posx][posy].equals("") ){
-                arAsignacion[posx][posy] = arImagenes[i];
+                arAsignacion[posx][posy] = arImagenes[ii];
                 cont++;
             }
-
             if(cont == 2){ // Sirve para comprobar que la imagen se asignó 2 veces
-                i++;
+                ii++;
                 cont = 0;
             }
         }
@@ -227,40 +235,36 @@ public class Memorama extends Stage implements EventHandler {
 
     private void RevolverAreImagenes(){
         Random r = new Random();
-        for (int i=0; i<arImagenes.length; i++) {
+        for (int ii=0; ii<arImagenes.length; ii++) {
             int posAleatoria = r.nextInt(arImagenes.length);
-            String temp = arImagenes[i];
-            arImagenes[i] = arImagenes[posAleatoria];
+            String temp = arImagenes[ii];
+            arImagenes[ii] = arImagenes[posAleatoria];
             arImagenes[posAleatoria] = temp;
         }
         System.out.print("revolver el arreglode imagenes ");
         System.out.print("size: "+arImagenes.length+"\n");
-        for (int i = 0; i <arImagenes.length ; i++) {
-            System.out.print(i+".-"+" "+arImagenes[i]+"\n");
+        for (int ii = 0; ii <arImagenes.length ; ii++) {
+            System.out.print(ii+".-"+" "+arImagenes[ii]+"\n");
         }System.out.print("\n");
     }
-    /*private void ComverTarjeta(int finalI, int finalJ) {
+    private void OcultarTarjetaU( int c1x, int c1y) {
 
-        Image img=new Image("sample/assets/"+arAsignacion[finalI][finalJ]);
-        ImageView imv=new ImageView(img);
-        imv.setFitHeight(100);
-        imv.setPreserveRatio(true);
-        arTarjetas[finalI][finalJ].setGraphic(imv);
-        arTarjetas[i][j].setGraphic(imv);
-        gdpMesa.add(arTarjetas[i][j],j,i);
-    }*/
-    private void OcultverTarjeta( int c1x, int c1y) {
-
-        Image img=new Image("sample/assets/pokerReverso.jpg");
-        ImageView imv=new ImageView(img);
-        imv.setFitHeight(100);
-        imv.setPreserveRatio(true);
-        //arTarjetas[i][j]= new Button();
-        arTarjetas[c1x][c1y].setGraphic(imv);
-        gdpMesa.add(arTarjetas[c1x][c1y],c1x,c1y);
+        Image imgOU=new Image("sample/assets/pokerReverso.jpg");
+        ImageView imvOU=new ImageView(imgOU);
+        imvOU.setFitHeight(100);
+        imvOU.setPreserveRatio(true);
+        //arTarjetas[c1x][c1y]= new Button();
+        arTarjetas[c1x][c1y].setGraphic(imvOU);
     }
+    private void OcultarTarjetaD( int c2x, int c2y) {
 
-
+        Image imgOD=new Image("sample/assets/pokerReverso.jpg");
+        ImageView imvOD=new ImageView(imgOD);
+        imvOD.setFitHeight(100);
+        imvOD.setPreserveRatio(true);
+        //arTarjetas[c2x][c2y]= new Button();
+        arTarjetas[c2x][c2y].setGraphic(imvOD);
+    }
 
     void Espera(int seg){
         try {
