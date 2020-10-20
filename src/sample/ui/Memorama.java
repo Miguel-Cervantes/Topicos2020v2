@@ -207,6 +207,11 @@ public class Memorama extends Stage implements EventHandler {
                 this.continents++;
                 System.out.print("contador: " + continents + "\n\n");
                 OcultarTarjetaU(c1x, c1y);
+                try {
+                    Thread.sleep(7000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 OcultarTarjetaD(c2x, c2y);
             }
         }
@@ -241,8 +246,11 @@ public class Memorama extends Stage implements EventHandler {
             arImagenes[ii] = arImagenes[posAleatoria];
             arImagenes[posAleatoria] = temp;
         }
+
+
         System.out.print("revolver el arreglode imagenes ");
         System.out.print("size: "+arImagenes.length+"\n");
+
         for (int ii = 0; ii <arImagenes.length ; ii++) {
             System.out.print(ii+".-"+" "+arImagenes[ii]+"\n");
         }System.out.print("\n");
