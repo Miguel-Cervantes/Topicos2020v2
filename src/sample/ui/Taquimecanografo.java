@@ -18,6 +18,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.StringTokenizer;
 
 public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
 
@@ -158,7 +159,7 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
             entrada = new BufferedReader(fr);
 
             while (entrada.ready()) {
-                codigo.append(entrada.readLine());
+                codigo.append(entrada.readLine()+"\n");
             }
 
         } catch (IOException e) {
@@ -172,7 +173,10 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
                 e2.printStackTrace();
             }
         }
+        /*
         txtContenido.setText(codigo.toString());
+        StringTokenizer st=new StringTokenizer(codigo);
+        System.out.println(st.countTokens());*/
     }
 
     @Override
@@ -185,7 +189,7 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
             //Primer Renglon de teclas
             case "ESCAPE": if(!banColor) { arBtnTeclado1[0].setStyle("-fx-background-color: #0D1526;"); banColor=true;
                 }else { arBtnTeclado1[0].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "PRINTSCREEN": if(banColor==false) { arBtnTeclado1[13].setStyle("-fx-background-color: #0D1526;"); banColor=true;
+            case "PRINTSCREEN": if(!banColor) { arBtnTeclado1[13].setStyle("-fx-background-color: #0D1526;"); banColor=true;
                 }else { arBtnTeclado1[13].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
             case "DELETE": if(!banColor) { arBtnTeclado1[14].setStyle("-fx-background-color: #0D1526;"); banColor=true;
                 }else { arBtnTeclado1[14].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
