@@ -120,7 +120,6 @@ public class Main extends Application implements EventHandler<WindowEvent>
     }
 
     @Override
-    public void handle(WindowEvent event) {
-        System.out.println("mostrando la ventana");
+    public void handle(WindowEvent event) {/*System.out.println("mostrando la ventana"*/;
     }
 }
