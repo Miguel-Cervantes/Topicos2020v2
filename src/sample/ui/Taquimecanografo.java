@@ -174,7 +174,7 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
               entrada = new BufferedReader(fr);
               while (entrada.ready()) {
                   codigo.append(entrada.readLine()+"\n");
-                  //codigoLine.append(entrada.readLine());
+                  //codigo.append(entrada.readLine());
               }
 
         } catch (IOException e) {
@@ -194,16 +194,25 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
         //System.out.println("codigoline: "+codigoLine+"\n");
 
         String codline= valueOf(codigo);
+        String cadEnter="";
 
         System.out.println("Array");
-        String cadenalineArray[] = codline.split(" ");
+        String cadenalineArray[] = codline.split("\n");
+
+        for (int i = 0; i <cadenalineArray.length ; i++) {
+            cadEnter= cadenalineArray[i];
+            System.out.print(cadenalineArray[i]);
+        }
+        System.out.print("CadEnter: "+cadEnter+"\n");
+
 
         for (int i = 0; i <cadenalineArray.length; i++) {
             System.out.println(i+1+".- "+cadenalineArray[i]);
         }
+
+        //cuentaPalabras(codline);
+
         txtPalabras.setText(Integer.toString(cadenalineArray.length));
-
-
     }
 
 
@@ -369,5 +378,27 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
 
         //System.out.print(event.getCode().getName()+"\n\n");
 
+    }
+    public static int cuentaPalabras(String s){
+        int conteoPalabras = 0;
+        boolean palabra = false;
+        int finDeLinea = s.length() - 1;
+
+        for (int i = 0; i < s.length(); i++) {
+            // Si el char is una letra, word = true.
+            if (Character.isLetter(s.charAt(i)) && i != finDeLinea) {
+                palabra = true;
+                // Si el char no es una letra y aún hay más letras,
+                // el contador continua.
+            } else if (!Character.isLetter(s.charAt(i)) && palabra) {
+                conteoPalabras++;
+                palabra = false;
+                // última palabra de la cadena; si no termina con una no letra ,
+            } else if (Character.isLetter(s.charAt(i)) && i == finDeLinea) {
+                conteoPalabras++;
+            }
+        }
+        System.out.println(conteoPalabras);
+        return conteoPalabras;
     }
 }
