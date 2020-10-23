@@ -3,8 +3,17 @@
     -fx-base: #666666;
 }
 
-#arBtnTeclado1{
-    -fx-base: #3068DF;
+.text-area{
+     -fx-pref-height: 700;
+     -fx-pref-width: 100;
+}
+.vbox .toolbar .button:hover{
+    -fx-background-color: #CCC;
+}
+
+#arBtnTeclado1Espace{
+
+    -fx-pref-width: 100;
 }
 #arBtnTeclado2{
     -fx-base: #3068DF;

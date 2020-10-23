@@ -3,9 +3,7 @@ package sample.ui;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.ToolBar;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -18,7 +16,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.StringTokenizer;
+
+import static java.lang.String.*;
 
 public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
 
@@ -49,6 +48,16 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
     private Button[] arBtnTeclado5=new Button[15];
     private Button[] arBtnTeclado6=new Button[9];
 
+    //Informacion del texto
+    private HBox HBoxInfo= new HBox();
+    private Label lblPalabras=new Label("Palabras Totales: ");
+    private TextField txtPalabras=new TextField();
+
+    //Texto para contar
+
+
+
+
 
     Scene escena;
 
@@ -63,15 +72,23 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
 
     private void CrearGUI(){
         CrearToolbar();
+        CrearHBoxInfo();
         CrearEscritura();
         CrearTeclado();
         //Elementos de agrupacion global
         VBox vBoxPrincipal = new VBox();
-        vBoxPrincipal.getChildren().addAll(tlbMenu,txtContenido,txtEscritura,vBoxTeclado);
-        vBoxPrincipal.setSpacing(10);
-        vBoxPrincipal.setPadding(new Insets(10));
-        escena=new Scene(vBoxPrincipal,800,500);
+        vBoxPrincipal.getChildren().addAll(tlbMenu,HBoxInfo,txtContenido,txtEscritura,vBoxTeclado);
+        vBoxPrincipal.setSpacing(3);
+        vBoxPrincipal.setPadding(new Insets(5));
+        escena=new Scene(vBoxPrincipal,565,675);
         escena.getStylesheets().add("sample/assets/Taqui_Style.css");
+    }
+
+    private void CrearHBoxInfo() {
+
+        txtPalabras.setPrefWidth(35);
+        txtPalabras.setEditable(false);
+        HBoxInfo.getChildren().addAll(lblPalabras,txtPalabras);
     }
 
     private void CrearTeclado() {
@@ -118,8 +135,6 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
     private void CrearEscritura() {
         txtContenido=new TextArea();
         txtContenido.setEditable(false);
-        txtContenido.getBaselineOffset();
-
         txtContenido.setPrefRowCount(6);
         txtEscritura=new TextArea();
         txtEscritura.setPrefRowCount(6);
@@ -131,12 +146,12 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
         tlbMenu=new ToolBar();
         Button btnAbrir = new Button();
         btnAbrir.setOnAction(event -> eventoTaqui());
-        btnAbrir.setPrefSize(15,15);
+        btnAbrir.setPrefSize(25,25);
+
         //Asignamos la imagen al boton abrir
         Image img=new Image("sample/assets/iconOpen.png");
-
         ImageView imv=new ImageView(img);
-        imv.setFitHeight(14);
+        imv.setFitHeight(25);
         imv.setPreserveRatio(true);
         btnAbrir.setGraphic(imv);
         tlbMenu.getItems().addAll(btnAbrir);
@@ -146,21 +161,21 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("abrir Archivo");
         File file = fileChooser.showOpenDialog(this);
-        String uurl = String.valueOf(file);
-        System.out.print(file);
+        String uurl = valueOf(file);
+        System.out.print(file+"\n");
 
         StringBuilder codigo = new StringBuilder();
+        StringBuilder codigoLine = new StringBuilder();
         new File(uurl);
 
         FileReader fr = null;
         BufferedReader entrada;
-        try {
-            fr = new FileReader(uurl);
-            entrada = new BufferedReader(fr);
-
-            while (entrada.ready()) {
-                codigo.append(entrada.readLine()+"\n");
-            }
+        try { fr = new FileReader(uurl);
+              entrada = new BufferedReader(fr);
+              while (entrada.ready()) {
+                  codigo.append(entrada.readLine()+"\n");
+                  //codigoLine.append(entrada.readLine());
+              }
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -173,17 +188,30 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
                 e2.printStackTrace();
             }
         }
-        /*
-        txtContenido.setText(codigo.toString());
-        StringTokenizer st=new StringTokenizer(codigo);
-        System.out.println(st.countTokens());*/
+        txtContenido.setText(valueOf(codigo));
+
+        System.out.println("codigo: "+codigo);
+        //System.out.println("codigoline: "+codigoLine+"\n");
+
+        String codline= valueOf(codigo);
+
+        System.out.println("Array");
+        String cadenalineArray[] = codline.split(" ");
+
+        for (int i = 0; i <cadenalineArray.length; i++) {
+            System.out.println(i+1+".- "+cadenalineArray[i]);
+        }
+        txtPalabras.setText(Integer.toString(cadenalineArray.length));
+
+
     }
+
 
     @Override
     public void handle(KeyEvent event)
     {
         //System.out.print(event.getCode().getName()+"\n");
-        System.out.print(event.getCode()+"\n\n");
+        //System.out.print(event.getCode()+"\n\n");
 
         switch (event.getCode().toString()){
             //Primer Renglon de teclas
@@ -287,59 +315,59 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
             case "SHIFT": if(!banColor) { arBtnTeclado5[0].setStyle("-fx-background-color: #0D1526;"); arBtnTeclado5[12].setStyle("-fx-background-color: #0D1526;"); banColor=true;
                 }else { arBtnTeclado5[0].setStyle("-fx-background-color: #666666;"); arBtnTeclado5[12].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
             case "LESS": if(!banColor) { arBtnTeclado5[1].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-            }else { arBtnTeclado5[1].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
+                }else { arBtnTeclado5[1].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
             case "Z": if(!banColor) { arBtnTeclado5[2].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-            }else { arBtnTeclado5[2].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
+                }else { arBtnTeclado5[2].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
             case "X": if(!banColor) { arBtnTeclado5[3].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-            }else { arBtnTeclado5[3].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
+                }else { arBtnTeclado5[3].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
             case "C": if(!banColor) { arBtnTeclado5[4].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-            }else { arBtnTeclado5[4].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
+                }else { arBtnTeclado5[4].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
             case "V": if(!banColor) { arBtnTeclado5[5].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-            }else { arBtnTeclado5[5].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
+                }else { arBtnTeclado5[5].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
             case "B": if(!banColor) { arBtnTeclado5[6].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-            }else { arBtnTeclado5[6].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
+                }else { arBtnTeclado5[6].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
             case "N": if(!banColor) { arBtnTeclado5[7].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-            }else { arBtnTeclado5[7].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
+                }else { arBtnTeclado5[7].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
             case "M": if(!banColor) { arBtnTeclado5[8].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-            }else { arBtnTeclado5[8].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
+                }else { arBtnTeclado5[8].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
             case "COMMA": if(!banColor) { arBtnTeclado5[9].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-            }else { arBtnTeclado5[9].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
+                }else { arBtnTeclado5[9].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
             case "PERIOD": if(!banColor) { arBtnTeclado5[10].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-            }else { arBtnTeclado5[10].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
+                }else { arBtnTeclado5[10].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
             case "MINUS": if(!banColor) { arBtnTeclado5[11].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-            }else { arBtnTeclado5[11].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
+                }else { arBtnTeclado5[11].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
             /*case "SHIFT": if(banColor==false) { arBtnTeclado5[12].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-            }else { arBtnTeclado5[12].setStyle("-fx-background-color: #666666;"); banColor=false; }break;*/
+                }else { arBtnTeclado5[12].setStyle("-fx-background-color: #666666;"); banColor=false; }break;*/
             case "UP": if(!banColor) { arBtnTeclado5[13].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-            }else { arBtnTeclado5[13].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
+                }else { arBtnTeclado5[13].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
             case "PAGE_DOWN": if(!banColor) { arBtnTeclado5[14].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-            }else { arBtnTeclado5[14].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
+                }else { arBtnTeclado5[14].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
             //Sexta linea de teclas
             case "CONTROL": if(!banColor) { arBtnTeclado6[0].setStyle("-fx-background-color: #0D1526;"); arBtnTeclado6[5].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-            }else { arBtnTeclado6[0].setStyle("-fx-background-color: #666666;"); arBtnTeclado6[5].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
+                }else { arBtnTeclado6[0].setStyle("-fx-background-color: #666666;"); arBtnTeclado6[5].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
             case "ALT": if(!banColor) { arBtnTeclado6[1].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-            }else { arBtnTeclado6[1].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
+                }else { arBtnTeclado6[1].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
             case "SPACE": if(!banColor) { arBtnTeclado6[2].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-            }else { arBtnTeclado6[2].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
+                }else { arBtnTeclado6[2].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
             /*case "CONTROL ALT_GRAPH": if(banColor==false) { arBtnTeclado6[3].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-            }else { arBtnTeclado6[3].setStyle("-fx-background-color: #666666;"); banColor=false; }break;*/
+                }else { arBtnTeclado6[3].setStyle("-fx-background-color: #666666;"); banColor=false; }break;*/
             case "CONTEXT_MENU": if(!banColor) { arBtnTeclado6[4].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-            }else { arBtnTeclado6[4].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
+                }else { arBtnTeclado6[4].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
             /*case "CONTROL": if(banColor==false) { arBtnTeclado6[5].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-            }else { arBtnTeclado6[5].setStyle("-fx-background-color: #666666;"); banColor=false; }break;*/
+                }else { arBtnTeclado6[5].setStyle("-fx-background-color: #666666;"); banColor=false; }break;*/
             case "LEFT": if(!banColor) { arBtnTeclado6[6].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-            }else { arBtnTeclado6[6].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
+                }else { arBtnTeclado6[6].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
             case "DOWN": if(!banColor) { arBtnTeclado6[7].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-            }else { arBtnTeclado6[7].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
+                }else { arBtnTeclado6[7].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
             case "RIGHT": if(!banColor) { arBtnTeclado6[8].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-            }else { arBtnTeclado6[8].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
+                }else { arBtnTeclado6[8].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
         }
         /*switch (event.getCode().getName().toString()){
             case "Alt Graph": if(banColor==false) { arBtnTeclado6[3].setStyle("-fx-background-color: #0D1526;"); banColor=true;
             }else { arBtnTeclado6[3].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
         }*/
 
-        System.out.print(event.getCode().getName()+"\n\n");
+        //System.out.print(event.getCode().getName()+"\n\n");
 
     }
 }
