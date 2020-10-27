@@ -26,8 +26,8 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
 
     //Arreglos para etiquetar los bonotes
     private String[] arLblBtn1 ={"ESC","F1","F2","F3","F4","F5","F6","F7","F8","F9","F10","F11","F12","IMP PNT","SUPR"};
-    private String[] arLblBtn2 ={"°|¬","1!","2","3#","4$","5%","6&","7/","8(","9)","0=","'?","¿¡","BORRAR","INICIO"};
-    private String[] arLblBtn3 ={"TAB","Q@","W","E","R","T","Y","U","I","O","P","´¨","*+~","ENTER","FIN"};
+    private String[] arLblBtn2 ={"°|¬","1!","2","3#","4$","5%","6&","7/","8(","9)","0=","'?","¿¡","BORRAR","IN"};
+    private String[] arLblBtn3 ={"TAB","Q","W","E","R","T","Y","U","I","O","P","´¨","*+~","ENTER","FIN"};
     private String[] arLblBtn4 ={"BM","A","S","D","F","G","H","J","K","L","Ñ","{[^","]}`","REPAG"};
     private String[] arLblBtn5 ={"SHIFT","<>","Z","X","C","V","B","N","M",",;",".:","-_","SHIFT","^","AVPAG"};
     private String[] arLblBtn6 ={"CTRL","ALT","ESPACIO","MENU","CTRL","<","DOWN",">"};
@@ -98,27 +98,54 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
             arBtnTeclado1[i]=new Button(arLblBtn1[i]);
             arBtnTeclado1[i].setStyle("-fx-background-color: #666666;");
             arHboxTeclas[0].getChildren().add(arBtnTeclado1[i]);
-        }
+        }arBtnTeclado1[0].setId("ButtonWidthESC");
         for (int i = 0; i <arBtnTeclado2.length ; i++) {
             arBtnTeclado2[i]=new Button(arLblBtn2[i]);
             arBtnTeclado2[i].setStyle("-fx-background-color: #666666;");
             arHboxTeclas[1].getChildren().add(arBtnTeclado2[i]);
-        }
+        }arBtnTeclado2[0].setId("ButtonWidth5");arBtnTeclado2[1].setId("ButtonWidth5");
+        arBtnTeclado2[2].setId("ButtonWidth5");arBtnTeclado2[3].setId("ButtonWidth5");
+        arBtnTeclado2[4].setId("ButtonWidth5");arBtnTeclado2[5].setId("ButtonWidth5");
+        arBtnTeclado2[6].setId("ButtonWidth5");arBtnTeclado2[7].setId("ButtonWidth5");
+        arBtnTeclado2[8].setId("ButtonWidth5");arBtnTeclado2[9].setId("ButtonWidth5");
+        arBtnTeclado2[10].setId("ButtonWidth5");arBtnTeclado2[11].setId("ButtonWidth5");
+        arBtnTeclado2[12].setId("ButtonWidth5");arBtnTeclado2[13].setId("ButtonWidthBorrar");
+
         for (int i = 0; i <arBtnTeclado3.length ; i++) {
             arBtnTeclado3[i]=new Button(arLblBtn3[i]);
             arBtnTeclado3[i].setStyle("-fx-background-color: #666666;");
             arHboxTeclas[2].getChildren().add(arBtnTeclado3[i]);
-        }
+        }arBtnTeclado3[0].setId("ButtonWidthShift");arBtnTeclado3[1].setId("ButtonWidthTecla3");
+        arBtnTeclado3[2].setId("ButtonWidthTecla3");arBtnTeclado3[3].setId("ButtonWidthTecla3");
+        arBtnTeclado3[4].setId("ButtonWidthTecla3");arBtnTeclado3[5].setId("ButtonWidthTecla3");
+        arBtnTeclado3[6].setId("ButtonWidthTecla3");arBtnTeclado3[7].setId("ButtonWidthTecla3");
+        arBtnTeclado3[8].setId("ButtonWidthTecla3");arBtnTeclado3[9].setId("ButtonWidthTecla3");
+        arBtnTeclado3[10].setId("ButtonWidthTecla3");arBtnTeclado3[11].setId("ButtonWidth2");
+        arBtnTeclado3[12].setId("ButtonWidth3");arBtnTeclado3[13].setId("ButtonWidthEnter");
+
         for (int i = 0; i <arBtnTeclado4.length ; i++) {
             arBtnTeclado4[i]=new Button(arLblBtn4[i]);
             arBtnTeclado4[i].setStyle("-fx-background-color: #666666;");
             arHboxTeclas[3].getChildren().add(arBtnTeclado4[i]);
-        }
+        }arBtnTeclado4[0].setId("ButtonWidthBM");
+        arBtnTeclado4[1].setId("ButtonWidthTecla4");arBtnTeclado4[2].setId("ButtonWidthTecla4");
+        arBtnTeclado4[3].setId("ButtonWidthTecla4");arBtnTeclado4[4].setId("ButtonWidthTecla4");
+        arBtnTeclado4[5].setId("ButtonWidthTecla4");arBtnTeclado4[6].setId("ButtonWidthTecla4");
+        arBtnTeclado4[7].setId("ButtonWidthTecla4");arBtnTeclado4[8].setId("ButtonWidthTecla4");
+        arBtnTeclado4[9].setId("ButtonWidthTecla4");arBtnTeclado4[10].setId("ButtonWidthTecla4");
+        arBtnTeclado4[11].setId("ButtonWidthTecla4");arBtnTeclado4[12].setId("ButtonWidthTecla4");
+        arBtnTeclado4[13].setId("ButtonWidthTeclaRePag");
         for (int i = 0; i <arBtnTeclado5.length ; i++) {
             arBtnTeclado5[i]=new Button(arLblBtn5[i]);
             arBtnTeclado5[i].setStyle("-fx-background-color: #666666;");
             arHboxTeclas[4].getChildren().add(arBtnTeclado5[i]);
-        }arBtnTeclado5[0].setId("ButtonWidthShift");arBtnTeclado5[1].setId("ButtonWidth1");arBtnTeclado5[12].setId("ButtonWidthShift");
+        }arBtnTeclado5[0].setId("ButtonWidthShift");arBtnTeclado5[1].setId("ButtonWidth1");
+         arBtnTeclado5[2].setId("ButtonWidthTecla");arBtnTeclado5[3].setId("ButtonWidthTecla");
+         arBtnTeclado5[4].setId("ButtonWidthTecla");arBtnTeclado5[5].setId("ButtonWidthTecla");
+         arBtnTeclado5[6].setId("ButtonWidthTecla");arBtnTeclado5[7].setId("ButtonWidthTecla");
+         arBtnTeclado5[8].setId("ButtonWidthTecla");arBtnTeclado5[9].setId("ButtonWidthTecla");
+         arBtnTeclado5[10].setId("ButtonWidthTecla");arBtnTeclado5[11].setId("ButtonWidthTecla");
+         arBtnTeclado5[12].setId("ButtonWidthShift");
         for (int i = 0; i <arBtnTeclado6.length ; i++) {
             arBtnTeclado6[i]=new Button(arLblBtn6[i]);
             arBtnTeclado6[i].setStyle("-fx-background-color: #666666;");

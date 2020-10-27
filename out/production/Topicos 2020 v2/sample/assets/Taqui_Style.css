@@ -22,3 +22,33 @@
 #ButtonWidth1{
     -fx-pref-width: 36;
 }
+#ButtonWidthTecla{
+     -fx-pref-width: 29;
+}
+#ButtonWidthBM{
+     -fx-pref-width: 90;
+}
+#ButtonWidthTecla4{
+     -fx-pref-width: 31;
+}
+#ButtonWidthTeclaRePag{
+     -fx-pref-width: 67;
+}
+#ButtonWidthTecla3{
+     -fx-pref-width: 29;
+}
+#ButtonWidthEnter{
+     -fx-pref-width: 68;
+}
+#ButtonWidth2{
+     -fx-pref-width: 31;
+}
+#ButtonWidth5{
+     -fx-pref-width: 33;
+}
+#ButtonWidthBorrar{
+     -fx-pref-width: 69;
+}
+#ButtonWidthESC{
+     -fx-pref-width: 54;
+}
