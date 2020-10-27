@@ -413,5 +413,7 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
         //System.out.print(event.getCode().getName()+"\n\n");
 
     }
+    private void Time(){
 
+    }
 }
