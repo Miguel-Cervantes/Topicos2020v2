@@ -7,33 +7,18 @@
      -fx-pref-height: 700;
      -fx-pref-width: 100;
 }
-.vbox .toolbar .button:hover{
-    -fx-background-color: #CCC;
+.button:hover{
+
 }
-
-#arBtnTeclado1Espace{
-
-    -fx-pref-width: 100;
+#ButtonWidthSpace{
+    -fx-pref-width: 220;
 }
-#arBtnTeclado2{
-    -fx-base: #3068DF;
+#ButtonWidthCtrl{
+    -fx-pref-width: 65;
 }
-#arBtnTeclado3{
-    -fx-base: #3068DF;
+#ButtonWidthShift{
+    -fx-pref-width: 65;
 }
-#arBtnTeclado4{
-    -fx-base: #666666;
+#ButtonWidth1{
+    -fx-pref-width: 36;
 }
-#arBtnTeclado5{
-    -fx-base: #666666;
-}
-#arBtnTeclado6{
-    -fx-base: #666666;
-}
-
-
-
-
-
-
-

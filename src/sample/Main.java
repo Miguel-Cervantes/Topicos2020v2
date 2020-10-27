@@ -26,7 +26,7 @@ public class Main extends Application implements EventHandler<WindowEvent>
     private BorderPane brpPrincipal;
 
     private ToolBar tlbMenu;
-    private Button btnToolbar1;
+    private Button btnToolbar1,btnToolbar2;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -74,6 +74,10 @@ public class Main extends Application implements EventHandler<WindowEvent>
             btnToolbar1.setOnAction(event -> OpcionMenu(1));
             btnToolbar1.setPrefSize(15,15);
 
+            btnToolbar2=new Button();
+            btnToolbar2.setOnAction(event -> OpcionMenu(2));
+            btnToolbar2.setPrefSize(10,15);
+
             // Asignamos la imagen al boton dentro del toolbar
             Image img = new Image("sample/assets/game_control.png");
             ImageView imv = new ImageView(img);
@@ -81,7 +85,13 @@ public class Main extends Application implements EventHandler<WindowEvent>
             imv.setPreserveRatio(true);
             btnToolbar1.setGraphic(imv);
 
-            tlbMenu.getItems().add(btnToolbar1);
+            Image imgT = new Image("sample/assets/iconKeyboard.png");
+            ImageView imvT = new ImageView(imgT);
+            imvT.setFitHeight(15);
+            imvT.setPreserveRatio(true);
+            btnToolbar2.setGraphic(imvT);
+
+            tlbMenu.getItems().addAll(btnToolbar1,btnToolbar2);
 
             vPrincipal = new VBox();
             vPrincipal.getChildren().addAll(mnbProyecto,tlbMenu);
