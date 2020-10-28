@@ -15,6 +15,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.StringTokenizer;
 
 import static java.lang.String.*;
 
@@ -230,9 +231,49 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
             }
             txtContenido.setText(valueOf(codigo));
             System.out.println("codigo: " + "\n" + codigo);
-            //System.out.println("codigoline: "+codigoLine+"\n");
             String codline = valueOf(codigo);
             String cadEnter = "", cadPunto = "";
+
+            String a="\n";
+            int intIndexa = a.indexOf(String.valueOf(codigo));
+            if(intIndexa == - 1){
+                System.out.println("palabra encontrada");
+            }else{
+                System.out.println("palabra no encontrada" + intIndexa);
+            }
+            String b=" ";
+            int intIndexb = b.indexOf(String.valueOf(codigo));
+            if(intIndexb == - 1){
+                System.out.println("palabra encontrada");
+            }else{
+                System.out.println("palabra no encontrada" + intIndexb);
+            }
+            String c=",";
+            int intIndexc = c.indexOf(String.valueOf(codigo));
+            if(intIndexc == - 1){
+                System.out.println("palabra encontrada");
+            }else{
+                System.out.println("palabra no encontrada" + intIndexc);
+            }
+            String d=".";
+            int intIndexd = d.indexOf(String.valueOf(codigo));
+            if(intIndexd == - 1){
+                System.out.println("palabra encontrada");
+            }else{
+                System.out.println("palabra no encontrada" + intIndexd);
+            }
+            String e="-";
+            int intIndexe = e.indexOf(String.valueOf(codigo));
+            if(intIndexe == - 1){
+                System.out.println("palabra encontrada");
+            }else{
+                System.out.println("palabra no encontrada" + intIndexe);
+            }
+
+
+
+
+
 
             String[] cadenalineArray = codline.split("\n");
 
@@ -240,20 +281,21 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
                 cadEnter = cadEnter + cadenalineArray[i];
                 //System.out.print(cadenalineArray[i]);
             }
-            System.out.print("CadEnter: " + cadEnter + "\n");
+            //System.out.print("CadEnter: " + cadEnter + "\n");
+            StringTokenizer st=new StringTokenizer(cadEnter);
 
             String[] cadenab = cadEnter.split(" ");
             for (int i = 0; i < cadenab.length; i++) {
                 cadPunto = cadPunto + cadenab[i];
                 //System.out.print(cadenalineArray[i]);
             }
-            System.out.print("CadPunto: " + cadPunto + "\n");
+            //System.out.print("CadPunto: " + cadPunto + "\n");
 
-            System.out.println("Array");
+            /*System.out.println("Array");
             for (int i = 0; i < cadenab.length; i++) {
                 System.out.println(i + 1 + ".- " + cadenab[i]);
-            }
-            txtPalabras.setText(Integer.toString(cadenab.length));
+            }*/
+            txtPalabras.setText(Integer.toString(st.countTokens()));
         }
     }
 
