@@ -11,7 +11,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -59,10 +58,7 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
 
     //Errores
     int error=0,escritas=0,palabrasT=0;
-
-
     Scene escena;
-
 
     public Taquimecanografo(){
         CrearGUI();
@@ -98,7 +94,6 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
         txtPalabrasE.setEditable(false);
         txtPalabrasE.setText(Integer.toString(escritas));
         HBoxInfo.getChildren().addAll(lblPalabras,txtPalabras,lblErrores,txtErrores,lblPalabrasE,txtPalabrasE);
-
 
     }
 
@@ -199,69 +194,66 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("abrir Archivo");
         File file = fileChooser.showOpenDialog(this);
-        String uurl = valueOf(file);
-        System.out.print(file+"\n");
+
+        String uurl=null;
+        System.out.println(uurl+"\n");
+                uurl = valueOf(file);
+        System.out.println(uurl+"\n");
+        //System.out.print(file+"\n");
 
         StringBuilder codigo = new StringBuilder();
-        StringBuilder codigoLine = new StringBuilder();
+        //StringBuilder codigoLine = new StringBuilder();
         new File(uurl);
 
         FileReader fr = null;
         BufferedReader entrada;
-        try { fr = new FileReader(uurl);
-              entrada = new BufferedReader(fr);
-              while (entrada.ready()) {
-                  codigo.append(entrada.readLine()).append("\n");
-                  //codigo.append(entrada.readLine());
-              }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
+        if(uurl.equals("null")){}else {
             try {
-                if (null != fr) {
-                    fr.close();
+                fr = new FileReader(uurl);
+                entrada = new BufferedReader(fr);
+                while (entrada.ready()) {
+                    codigo.append(entrada.readLine()).append("\n");
+                    //codigo.append(entrada.readLine());
                 }
-            } catch (Exception e2) {
-                e2.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    if (null != fr) {
+                        fr.close();
+                    }
+                } catch (Exception e2) {
+                    e2.printStackTrace();
+                }
             }
+            txtContenido.setText(valueOf(codigo));
+            System.out.println("codigo: " + "\n" + codigo);
+            //System.out.println("codigoline: "+codigoLine+"\n");
+            String codline = valueOf(codigo);
+            String cadEnter = "", cadPunto = "";
+
+            String[] cadenalineArray = codline.split("\n");
+
+            for (int i = 0; i < cadenalineArray.length; i++) {
+                cadEnter = cadEnter + cadenalineArray[i];
+                //System.out.print(cadenalineArray[i]);
+            }
+            System.out.print("CadEnter: " + cadEnter + "\n");
+
+            String[] cadenab = cadEnter.split(" ");
+            for (int i = 0; i < cadenab.length; i++) {
+                cadPunto = cadPunto + cadenab[i];
+                //System.out.print(cadenalineArray[i]);
+            }
+            System.out.print("CadPunto: " + cadPunto + "\n");
+
+            System.out.println("Array");
+            for (int i = 0; i < cadenab.length; i++) {
+                System.out.println(i + 1 + ".- " + cadenab[i]);
+            }
+            //cuentaPalabras(codline);
+            txtPalabras.setText(Integer.toString(cadenab.length));
         }
-        txtContenido.setText(valueOf(codigo));
-
-        System.out.println("codigo: "+"\n"+codigo);
-        //System.out.println("codigoline: "+codigoLine+"\n");
-
-        String codline= valueOf(codigo);
-        String cadEnter="",cadPunto="";
-
-
-        String[] cadenalineArray = codline.split("\n");
-
-        for (int i = 0; i <cadenalineArray.length ; i++) {
-            cadEnter= cadEnter+cadenalineArray[i];
-            //System.out.print(cadenalineArray[i]);
-        }
-        System.out.print("CadEnter: "+cadEnter+"\n");
-
-        String[] cadenab = cadEnter.split(" ");
-        for (int i = 0; i <cadenab.length ; i++) {
-            cadPunto= cadPunto+cadenab[i];
-            //System.out.print(cadenalineArray[i]);
-        }
-        System.out.print("CadPunto: "+cadPunto+"\n");
-
-
-
-
-
-        System.out.println("Array");
-        for (int i = 0; i <cadenab.length; i++) {
-            System.out.println(i+1+".- "+cadenab[i]);
-        }
-
-        //cuentaPalabras(codline);
-
-        txtPalabras.setText(Integer.toString(cadenab.length));
     }
 
 
