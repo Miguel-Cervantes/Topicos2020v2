@@ -52,6 +52,13 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
     private HBox HBoxInfo= new HBox();
     private Label lblPalabras=new Label("Palabras Totales: ");
     private TextField txtPalabras=new TextField();
+    private Label lblErrores=new Label(" Errores: ");
+    private TextField txtErrores=new TextField();
+    private Label lblPalabrasE=new Label(" Palabras Escritas ");
+    private TextField txtPalabrasE=new TextField();
+
+    //Errores
+    int error=0,escritas=0,palabrasT=0;
 
 
     Scene escena;
@@ -83,7 +90,15 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
 
         txtPalabras.setPrefWidth(35);
         txtPalabras.setEditable(false);
-        HBoxInfo.getChildren().addAll(lblPalabras,txtPalabras);
+        txtPalabrasE.setText(Integer.toString(palabrasT));
+        txtErrores.setPrefWidth(35);
+        txtErrores.setEditable(false);
+        txtErrores.setText(Integer.toString(error));
+        txtPalabrasE.setPrefWidth(35);
+        txtPalabrasE.setEditable(false);
+        txtPalabrasE.setText(Integer.toString(escritas));
+        HBoxInfo.getChildren().addAll(lblPalabras,txtPalabras,lblErrores,txtErrores,lblPalabrasE,txtPalabrasE);
+
 
     }
 
@@ -289,7 +304,7 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
                 }else { arBtnTeclado2[11].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
             /*case "UNDEFINED": if(banColor==false) { arBtnTeclado2[14].setStyle("-fx-background-color: #0D1526;"); banColor=true;
                 }else { arBtnTeclado2[14].setStyle("-fx-background-color: #666666;"); banColor=false; }break;*/
-            case "BACK_SPACE": if(!banColor) { arBtnTeclado2[13].setStyle("-fx-background-color: #0D1526;"); banColor=true;
+            case "BACK_SPACE": if(!banColor) { arBtnTeclado2[13].setStyle("-fx-background-color: #0D1526;"); banColor=true; error++; txtErrores.setText(Integer.toString(error));
                 }else { arBtnTeclado2[13].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
             case "HOME": if(!banColor) { arBtnTeclado2[14].setStyle("-fx-background-color: #0D1526;"); banColor=true;
                 }else { arBtnTeclado2[14].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
@@ -390,7 +405,7 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
                 }else { arBtnTeclado6[0].setStyle("-fx-background-color: #666666;"); arBtnTeclado6[4].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
             case "ALT": if(!banColor) { arBtnTeclado6[1].setStyle("-fx-background-color: #0D1526;"); banColor=true;
                 }else { arBtnTeclado6[1].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "SPACE": if(!banColor) { arBtnTeclado6[2].setStyle("-fx-background-color: #0D1526;"); banColor=true;
+            case "SPACE": if(!banColor) { arBtnTeclado6[2].setStyle("-fx-background-color: #0D1526;"); banColor=true; escritas++; txtPalabrasE.setText(Integer.toString(escritas));
                 }else { arBtnTeclado6[2].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
             /*case "CONTROL ALT_GRAPH": if(banColor==false) { arBtnTeclado6[3].setStyle("-fx-background-color: #0D1526;"); banColor=true;
                 }else { arBtnTeclado6[3].setStyle("-fx-background-color: #666666;"); banColor=false; }break;*/
