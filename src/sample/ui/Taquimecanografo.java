@@ -90,7 +90,7 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
 
         txtPalabras.setPrefWidth(35);
         txtPalabras.setEditable(false);
-        txtPalabrasE.setText(Integer.toString(palabrasT));
+        txtPalabras.setText(Integer.toString(palabrasT));
         txtErrores.setPrefWidth(35);
         txtErrores.setEditable(false);
         txtErrores.setText(Integer.toString(error));
@@ -243,7 +243,7 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
         }
         System.out.print("CadEnter: "+cadEnter+"\n");
 
-        String[] cadenab = cadEnter.split(",");
+        String[] cadenab = cadEnter.split(" ");
         for (int i = 0; i <cadenab.length ; i++) {
             cadPunto= cadPunto+cadenab[i];
             //System.out.print(cadenalineArray[i]);
@@ -255,13 +255,13 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
 
 
         System.out.println("Array");
-        for (int i = 0; i <cadenalineArray.length; i++) {
-            System.out.println(i+1+".- "+cadenalineArray[i]);
+        for (int i = 0; i <cadenab.length; i++) {
+            System.out.println(i+1+".- "+cadenab[i]);
         }
 
         //cuentaPalabras(codline);
 
-        txtPalabras.setText(Integer.toString(cadenalineArray.length));
+        txtPalabras.setText(Integer.toString(cadenab.length));
     }
 
 
