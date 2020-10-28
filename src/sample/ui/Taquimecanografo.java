@@ -196,9 +196,7 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
         File file = fileChooser.showOpenDialog(this);
 
         String uurl=null;
-        System.out.println(uurl+"\n");
                 uurl = valueOf(file);
-        System.out.println(uurl+"\n");
         //System.out.print(file+"\n");
 
         StringBuilder codigo = new StringBuilder();
@@ -207,13 +205,17 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
 
         FileReader fr = null;
         BufferedReader entrada;
-        if(uurl.equals("null")){}else {
+        if(!uurl.equals("null")){
+            palabrasT=0;error=0;escritas=0;
+            txtPalabras.setText(Integer.toString(palabrasT));
+            txtErrores.setText(Integer.toString(error));
+            txtPalabrasE.setText(Integer.toString(escritas));
+
             try {
                 fr = new FileReader(uurl);
                 entrada = new BufferedReader(fr);
                 while (entrada.ready()) {
                     codigo.append(entrada.readLine()).append("\n");
-                    //codigo.append(entrada.readLine());
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -251,7 +253,6 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
             for (int i = 0; i < cadenab.length; i++) {
                 System.out.println(i + 1 + ".- " + cadenab[i]);
             }
-            //cuentaPalabras(codline);
             txtPalabras.setText(Integer.toString(cadenab.length));
         }
     }
