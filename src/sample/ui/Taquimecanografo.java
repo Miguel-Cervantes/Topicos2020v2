@@ -228,42 +228,51 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
                     e2.printStackTrace();
                 }
             }
+            //-----Mostrar texto en el text area------------------------------
             txtContenido.setText(valueOf(codigo));
             //System.out.println("codigo: " + "\n" + codigo);
+
+            //--------Declara variables y herramientas-------------------------------------
             String codline = valueOf(codigo);
             String cadEnter = "",cadTamaño="";
             ArrayList caracterChar=new ArrayList();
 
+            //-------quitar enters para tener un sola cadena lineal---------------
             String[] cadenalineArray = codline.split("\n");
 
             for (int i = 0; i < cadenalineArray.length; i++) {
                 cadEnter = cadEnter + cadenalineArray[i];
             }
 
+            //----------Mostrar evolucion de las cadenas String------------------------------------------------------
             System.out.println("\n");
             System.out.println("cadEnter: "+cadEnter+"\n");
 
+            //------------------------------------------------------------------
+            System.out.println("Split para quitar los enters"+"\n");
             for (int i = 0; i <cadenalineArray.length ; i++) {
                 System.out.println((i+1)+".- "+cadenalineArray[i]);
             }System.out.println("\n");
 
-            for (int x=0;x<cadEnter.length();x++){
-                System.out.println("Caracter " + x + ": " + cadEnter.charAt(x));
-                caracterChar.add(x,cadEnter.charAt(x));
+            //------Meter los chars de la cadena en un array-----------------------------------------------------------
+            for (int x=0;x<codline.length();x++){
+                //System.out.println("Caracter " + x + ": " + codline.charAt(x));
+                caracterChar.add(x,codline.charAt(x));
             }System.out.println("\n");
 
+            //------mostar el arreglo de chars de la candena para comparar con la cadena entrante-------------------------
             for (int i = 0; i <caracterChar.size(); i++) {
                 System.out.println(i+".- "+caracterChar.get(i));
             }System.out.println("\n");
 
+            //-------Total de chars del txt para saber si se copio el texto completo--------------------------------------------------------------
             int TotalCaracteres=caracterChar.size();
-
             System.out.println("TotalChaer: "+TotalCaracteres);
             System.out.println("\n");
 
+            //---------------------------------------------------------------------
             String a="\n";
             int intIndexa = codline.indexOf(a);
-
             if(intIndexa != - 1){
                 System.out.println("palabra encontrada: "+a);
                 codline = codline.replaceAll(a, "~");
@@ -271,7 +280,7 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
                 System.out.println("palabra no encontrada" + intIndexa + " : " + a);
             }
             System.out.println("codline line:  "+codline+"\n");
-
+            //-----------------------------------------------------------------------
             /*String a="\n";
             int intIndexa = cadEnter.indexOf(a);
             if(intIndexa != - 1){
