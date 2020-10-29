@@ -285,11 +285,11 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
                 System.out.println("palabra no encontrada" + intIndexe+" : "+e+"\n");
             }
 
-            String[] cadTamañoArray = codline.split("\n");
-
+            String[] cadTamañoArray = codline.split(String.valueOf('¬'));
+            System.out.println("tamaño toral array: "+cadenalineArray.length);
             for (int i = 0; i < cadenalineArray.length; i++) {
                 cadTamaño = cadTamaño + cadTamañoArray[i];
-            }
+            }System.out.print("cadTamaño: " + cadTamaño + "\n");
 
             System.out.print("CadEnter: " + cadEnter + "\n");
             //System.out.print("Codigo: " + codigo + "\n");
