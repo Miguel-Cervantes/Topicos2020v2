@@ -232,7 +232,7 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
             txtContenido.setText(valueOf(codigo));
             System.out.println("codigo: " + "\n" + codigo);
             String codline = valueOf(codigo);
-            String cadEnter = "";
+            String cadEnter = "",cadTamaño="";
 
             String[] cadenalineArray = codline.split("\n");
 
@@ -280,29 +280,22 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
             int intIndexe = cadEnter.indexOf(e);
             if(intIndexe != - 1){
                 System.out.println("palabra encontrada: "+e);
-                cadEnter = cadEnter.replaceAll(e,"/");
+                cadEnter = cadEnter.replaceAll(e,"¬");
             }else{
                 System.out.println("palabra no encontrada" + intIndexe+" : "+e+"\n");
             }
 
+            String[] cadTamañoArray = codline.split("\n");
+
+            for (int i = 0; i < cadenalineArray.length; i++) {
+                cadTamaño = cadTamaño + cadTamañoArray[i];
+            }
 
             System.out.print("CadEnter: " + cadEnter + "\n");
             //System.out.print("Codigo: " + codigo + "\n");
             //System.out.print("CodigoLine: " + codline + "\n");
-            //StringTokenizer st=new StringTokenizer(cadEnter);
 
-            /*String[] cadenab = cadEnter.split(" ");
-            for (int i = 0; i < cadenab.length; i++) {
-                cadPunto = cadPunto + cadenab[i];
-                //System.out.print(cadenalineArray[i]);
-            }*/
-            //System.out.print("CadPunto: " + cadPunto + "\n");
-
-            /*System.out.println("Array");
-            for (int i = 0; i < cadenab.length; i++) {
-                System.out.println(i + 1 + ".- " + cadenab[i]);
-            }*/
-            //txtPalabras.setText(Integer.toString(st.countTokens()));
+            txtPalabras.setText(Integer.toString(cadTamañoArray.length));
         }
     }
 
