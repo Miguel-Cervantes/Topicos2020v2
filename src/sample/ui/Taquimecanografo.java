@@ -232,70 +232,77 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
             txtContenido.setText(valueOf(codigo));
             System.out.println("codigo: " + "\n" + codigo);
             String codline = valueOf(codigo);
-            String cadEnter = "", cadPunto = "";
-
-            String a="\n";
-            int intIndexa = a.indexOf(String.valueOf(codigo));
-            if(intIndexa == - 1){
-                System.out.println("palabra encontrada");
-            }else{
-                System.out.println("palabra no encontrada" + intIndexa);
-            }
-            String b=" ";
-            int intIndexb = b.indexOf(String.valueOf(codigo));
-            if(intIndexb == - 1){
-                System.out.println("palabra encontrada");
-            }else{
-                System.out.println("palabra no encontrada" + intIndexb);
-            }
-            String c=",";
-            int intIndexc = c.indexOf(String.valueOf(codigo));
-            if(intIndexc == - 1){
-                System.out.println("palabra encontrada");
-            }else{
-                System.out.println("palabra no encontrada" + intIndexc);
-            }
-            String d=".";
-            int intIndexd = d.indexOf(String.valueOf(codigo));
-            if(intIndexd == - 1){
-                System.out.println("palabra encontrada");
-            }else{
-                System.out.println("palabra no encontrada" + intIndexd);
-            }
-            String e="-";
-            int intIndexe = e.indexOf(String.valueOf(codigo));
-            if(intIndexe == - 1){
-                System.out.println("palabra encontrada");
-            }else{
-                System.out.println("palabra no encontrada" + intIndexe);
-            }
-
-
-
-
-
+            String cadEnter = "";
 
             String[] cadenalineArray = codline.split("\n");
 
             for (int i = 0; i < cadenalineArray.length; i++) {
                 cadEnter = cadEnter + cadenalineArray[i];
-                //System.out.print(cadenalineArray[i]);
             }
-            //System.out.print("CadEnter: " + cadEnter + "\n");
-            StringTokenizer st=new StringTokenizer(cadEnter);
 
-            String[] cadenab = cadEnter.split(" ");
+            String a="\n";
+            int intIndexa = cadEnter.indexOf(a);
+            if(intIndexa != - 1){
+                System.out.println("palabra encontrada: "+a);
+                cadEnter = cadEnter.replaceAll(a, "");
+            }else{
+                System.out.println("palabra no encontrada" + intIndexa+" : "+a);
+            }
+
+            String b=".";
+            int intIndexb = cadEnter.indexOf(b);
+            if(intIndexb != - 1){
+                System.out.println("palabra encontrada: "+b);
+                cadEnter = cadEnter.replaceAll(b, "");
+            }else{
+                System.out.println("palabra no encontrada" + intIndexb+" : "+b);
+            }
+
+            String c=",";
+            int intIndexc = cadEnter.indexOf(c);
+            if(intIndexc != - 1){
+                System.out.println("palabra encontrada: "+c);
+                cadEnter = cadEnter.replaceAll(c,"");
+            }else{
+                System.out.println("palabra no encontrada" + intIndexc+" : "+c);
+            }
+
+            String d="-";
+            int intIndexd = cadEnter.indexOf(d);
+            if(intIndexd != - 1){
+                System.out.println("palabra encontrada: "+d);
+                cadEnter = cadEnter.replaceAll(d,"");
+            }else{
+                System.out.println("palabra no encontrada" + intIndexd+" : "+d);
+            }
+
+            String e=" ";
+            int intIndexe = cadEnter.indexOf(e);
+            if(intIndexe != - 1){
+                System.out.println("palabra encontrada: "+e);
+                cadEnter = cadEnter.replaceAll(e,"/");
+            }else{
+                System.out.println("palabra no encontrada" + intIndexe+" : "+e+"\n");
+            }
+
+
+            System.out.print("CadEnter: " + cadEnter + "\n");
+            //System.out.print("Codigo: " + codigo + "\n");
+            //System.out.print("CodigoLine: " + codline + "\n");
+            //StringTokenizer st=new StringTokenizer(cadEnter);
+
+            /*String[] cadenab = cadEnter.split(" ");
             for (int i = 0; i < cadenab.length; i++) {
                 cadPunto = cadPunto + cadenab[i];
                 //System.out.print(cadenalineArray[i]);
-            }
+            }*/
             //System.out.print("CadPunto: " + cadPunto + "\n");
 
             /*System.out.println("Array");
             for (int i = 0; i < cadenab.length; i++) {
                 System.out.println(i + 1 + ".- " + cadenab[i]);
             }*/
-            txtPalabras.setText(Integer.toString(st.countTokens()));
+            //txtPalabras.setText(Integer.toString(st.countTokens()));
         }
     }
 
