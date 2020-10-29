@@ -11,10 +11,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+
+import java.io.*;
+import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 import static java.lang.String.*;
@@ -230,9 +229,10 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
                 }
             }
             txtContenido.setText(valueOf(codigo));
-            System.out.println("codigo: " + "\n" + codigo);
+            //System.out.println("codigo: " + "\n" + codigo);
             String codline = valueOf(codigo);
             String cadEnter = "",cadTamaño="";
+            ArrayList caracterChar=new ArrayList();
 
             String[] cadenalineArray = codline.split("\n");
 
@@ -240,60 +240,183 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
                 cadEnter = cadEnter + cadenalineArray[i];
             }
 
+            System.out.println("\n");
+            System.out.println("cadEnter: "+cadEnter+"\n");
+
+            for (int i = 0; i <cadenalineArray.length ; i++) {
+                System.out.println((i+1)+".- "+cadenalineArray[i]);
+            }System.out.println("\n");
+
+            for (int x=0;x<cadEnter.length();x++){
+                System.out.println("Caracter " + x + ": " + cadEnter.charAt(x));
+                caracterChar.add(x,cadEnter.charAt(x));
+            }System.out.println("\n");
+
+            for (int i = 0; i <caracterChar.size(); i++) {
+                System.out.println(i+".- "+caracterChar.get(i));
+            }System.out.println("\n");
+
+            int TotalCaracteres=caracterChar.size();
+
+            System.out.println("TotalChaer: "+TotalCaracteres);
+            System.out.println("\n");
+
             String a="\n";
+            int intIndexa = codline.indexOf(a);
+
+            if(intIndexa != - 1){
+                System.out.println("palabra encontrada: "+a);
+                codline = codline.replaceAll(a, "~");
+            }else {
+                System.out.println("palabra no encontrada" + intIndexa + " : " + a);
+            }
+            System.out.println("codline line:  "+codline+"\n");
+
+            /*String a="\n";
             int intIndexa = cadEnter.indexOf(a);
             if(intIndexa != - 1){
                 System.out.println("palabra encontrada: "+a);
                 cadEnter = cadEnter.replaceAll(a, "");
             }else{
                 System.out.println("palabra no encontrada" + intIndexa+" : "+a);
-            }
+            }*/
 
             String b=".";
+            int intIndexb = codline.indexOf(b);
+            if(intIndexb != - 1){
+                System.out.println("palabra encontrada: "+b);
+                codline = codline.replaceAll(b, "");
+            }else{
+                System.out.println("palabra no encontrada" + intIndexb+" : "+b);
+            }System.out.println("codline liner:  "+codline+"\n");
+
+            /*String b=".";
             int intIndexb = cadEnter.indexOf(b);
             if(intIndexb != - 1){
                 System.out.println("palabra encontrada: "+b);
                 cadEnter = cadEnter.replaceAll(b, "");
             }else{
                 System.out.println("palabra no encontrada" + intIndexb+" : "+b);
-            }
+            }*/
 
             String c=",";
+            int intIndexc = codline.indexOf(c);
+            if(intIndexc != - 1){
+                System.out.println("palabra encontrada: "+c);
+                codline = codline.replaceAll(c,"");
+            }else{
+                System.out.println("palabra no encontrada" + intIndexc+" : "+c);
+            }System.out.println("codline line:  "+codline+"\n");
+
+            /*String c=",";
             int intIndexc = cadEnter.indexOf(c);
             if(intIndexc != - 1){
                 System.out.println("palabra encontrada: "+c);
                 cadEnter = cadEnter.replaceAll(c,"");
             }else{
                 System.out.println("palabra no encontrada" + intIndexc+" : "+c);
-            }
+            }*/
 
             String d="-";
+            int intIndexd = codline.indexOf(d);
+            if(intIndexd != - 1){
+                System.out.println("palabra encontrada: "+d);
+                codline = codline.replaceAll(d,"");
+            }else{
+                System.out.println("palabra no encontrada" + intIndexd+" : "+d);
+            }System.out.println("codline line:  "+codline+"\n");
+
+            /*String d="-";
             int intIndexd = cadEnter.indexOf(d);
             if(intIndexd != - 1){
                 System.out.println("palabra encontrada: "+d);
                 cadEnter = cadEnter.replaceAll(d,"");
             }else{
                 System.out.println("palabra no encontrada" + intIndexd+" : "+d);
-            }
+            }*/
 
-            String e=" ";
-            int intIndexe = cadEnter.indexOf(e);
+            String e=";";
+            int intIndexe = codline.indexOf(e);
             if(intIndexe != - 1){
                 System.out.println("palabra encontrada: "+e);
-                cadEnter = cadEnter.replaceAll(e,"¬");
+                codline = codline.replaceAll(e,"");
+            }else{
+                System.out.println("palabra no encontrada" + intIndexe+" : "+e);
+            }System.out.println("codline line:  "+codline+"\n");
+
+            /*String e=":";
+            int intIndexe = cadEnter.indexOf(e);
+            if(intIndexd != - 1){
+                System.out.println("palabra encontrada: "+d);
+                cadEnter = cadEnter.replaceAll(e,"");
+            }else{
+                System.out.println("palabra no encontrada" + intIndexd+" : "+d);
+            }*/
+
+            String f="-";
+            int intIndexf = codline.indexOf(f);
+            if(intIndexf != - 1){
+                System.out.println("palabra encontrada: "+f);
+                codline = codline.replaceAll(f,"~");
+            }else{
+                System.out.println("palabra no encontrada" + intIndexf+" : "+f);
+            }System.out.println("codline line:  "+codline+"\n");
+
+            /*String f="r";
+            int intIndexf = cadEnter.indexOf(f);
+            if(intIndexe != - 1){
+                System.out.println("palabra encontrada: "+f);
+                cadEnter = cadEnter.replaceAll(f,"~");
             }else{
                 System.out.println("palabra no encontrada" + intIndexe+" : "+e+"\n");
-            }
+            }*/
 
-            String[] cadTamañoArray = codline.split(String.valueOf('¬'));
-            System.out.println("tamaño toral array: "+cadenalineArray.length);
-            for (int i = 0; i < cadenalineArray.length; i++) {
-                cadTamaño = cadTamaño + cadTamañoArray[i];
-            }System.out.print("cadTamaño: " + cadTamaño + "\n");
+            String g="_";
+            int intIndexg = codline.indexOf(g);
+            if(intIndexg != - 1){
+                System.out.println("palabra encontrada: "+g);
+                codline = codline.replaceAll(g,"~");
+            }else{
+                System.out.println("palabra no encontrada" + intIndexg+" : "+g);
+            }System.out.println("codline line:  "+codline+"\n");
 
-            System.out.print("CadEnter: " + cadEnter + "\n");
+            String h=" ";
+            int intIndexh = codline.indexOf(h);
+            if(intIndexh != - 1){
+                System.out.println("palabra encontrada: "+h);
+                codline = codline.replaceAll(h,"~");
+            }else{
+                System.out.println("palabra no encontrada" + intIndexh+" : "+h+"\n");
+            }System.out.println("codline line:  "+codline+"\n");
+
+            String l="~~";
+            int intIndexl = codline.indexOf(l);
+            if(intIndexl != - 1){
+                System.out.println("palabra encontrada: "+l);
+                codline = codline.replaceAll(l,"~");
+            }else{
+                System.out.println("palabra no encontrada" + intIndexl+" : "+l);
+            }System.out.println("codline line:  "+codline+"\n");
+
+            //System.out.print("CadEnter: " + cadEnter + "\n");
             //System.out.print("Codigo: " + codigo + "\n");
             //System.out.print("CodigoLine: " + codline + "\n");
+
+            String[] cadTamañoArray = codline.split("~");
+            try {
+                //System.out.println("tamaño toral array: " + cadenalineArray.length);
+                for (int q = 0; q < cadTamañoArray.length; q++) {
+                    cadTamaño = cadTamaño + cadTamañoArray[q];
+                }
+                System.out.print("cadTamaño: " + cadTamaño + "\n");
+            }catch(Exception e1){
+                e1.printStackTrace();
+            }
+            System.out.println("\n");
+            for (int i = 0; i <cadTamañoArray.length ; i++) {
+                System.out.println((i+1)+".- "+cadTamañoArray[i]);
+            }
+
 
             txtPalabras.setText(Integer.toString(cadTamañoArray.length));
         }
@@ -304,7 +427,7 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
     public void handle(KeyEvent event)
     {
         //System.out.print(event.getCode().getName()+"\n");
-        //System.out.print(event.getCode()+"\n\n");
+        //System.out.print(event.getCode()+"\n");
 
         switch (event.getCode().toString()){
             //Primer Renglon de teclas
