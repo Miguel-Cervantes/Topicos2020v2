@@ -14,7 +14,6 @@ import javafx.stage.Stage;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.StringTokenizer;
 
 import static java.lang.String.*;
 
@@ -55,14 +54,18 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
     private TextField txtErrores=new TextField();
     private Label lblPalabrasE=new Label(" Palabras Escritas ");
     private TextField txtPalabrasE=new TextField();
+    private ArrayList caracterChar=new ArrayList();
 
     //Errores
     int error=0,escritas=0,palabrasT=0;
     Scene escena;
 
     //Cadena Entrante
-    ArrayList CharsEntrantes=new ArrayList();
-    int UltimaLetraABorrar=CharsEntrantes.size();
+    ArrayList<String> CharsEntrantes=new ArrayList<String>();
+
+    String uurl=null;
+    int o=0;
+
 
     public Taquimecanografo(){
         CrearGUI();
@@ -200,7 +203,6 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
         fileChooser.setTitle("abrir Archivo");
         File file = fileChooser.showOpenDialog(this);
 
-        String uurl=null;
                 uurl = valueOf(file);
         //System.out.print(file+"\n");
 
@@ -240,7 +242,6 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
             //--------Declara variables y herramientas-------------------------------------
             String codline = valueOf(codigo);
             String cadEnter = "",cadTamaño="";
-            ArrayList caracterChar=new ArrayList();
 
             //-------quitar enters para tener un sola cadena lineal---------------
             String[] cadenalineArray = codline.split("\n");
@@ -250,14 +251,14 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
             }
 
             //----------Mostrar evolucion de las cadenas String------------------------------------------------------
-            System.out.println("\n");
-            System.out.println("cadEnter: "+cadEnter+"\n");
+            //System.out.println("\n");
+            //System.out.println("cadEnter: "+cadEnter+"\n");
 
             //------------------------------------------------------------------
-            System.out.println("Mostrar arraySplit para quitar los enters");
+            /*System.out.println("Mostrar arraySplit para quitar los enters");
             for (int i = 0; i <cadenalineArray.length ; i++) {
                 System.out.println((i+1)+".- "+cadenalineArray[i]);
-            }System.out.println("\n");
+            }System.out.println("\n");*/
 
             //------Meter los chars de la cadena en un array-----------------------------------------------------------
             for (int x=0;x<codline.length();x++){
@@ -266,26 +267,26 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
             }//System.out.println("\n");
 
             //------mostar el arreglo de chars de la candena para comparar con la cadena entrante-------------------------
+            System.out.println("Arreglo chars"+"\n");
             for (int i = 0; i <caracterChar.size(); i++) {
-                System.out.println("Arreglo chars"+"\n");
                 System.out.print(i+".- "+caracterChar.get(i)+"\n");
-            }System.out.println("\n");
+            }//System.out.println("\n");
 
             //-------Total de chars del txt para saber si se copio el texto completo--------------------------------------------------------------
             int TotalCaracteres=caracterChar.size();
             System.out.println("TotalChars: "+TotalCaracteres);
-            System.out.println("\n");
+            //System.out.println("\n");
 
             //---------------------------------------------------------------------
             String a="\n";
             int intIndexa = codline.indexOf(a);
             if(intIndexa != - 1){
-                System.out.println("palabra encontrada: "+a);
+                //System.out.println("palabra encontrada: "+a);
                 codline = codline.replaceAll(a, "~");
             }else {
-                System.out.println("palabra no encontrada" + intIndexa + " : " + a);
+                //System.out.println("palabra no encontrada" + intIndexa + " : " + a);
             }
-            System.out.println("codline line:  "+codline+"\n");
+            //System.out.println("codline line:  "+codline+"\n");
 
             //-----------------------------------------------------------------------
             /*String a="\n";
@@ -300,11 +301,11 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
             String b=".";
             int intIndexb = codline.indexOf(b);
             if(intIndexb != - 1){
-                System.out.println("palabra encontrada: "+b);
+                //System.out.println("palabra encontrada: "+b);
                 codline = codline.replaceAll(b, "");
             }else{
-                System.out.println("palabra no encontrada" + intIndexb+" : "+b);
-            }System.out.println("codline liner:  "+codline+"\n");
+                //System.out.println("palabra no encontrada" + intIndexb+" : "+b);
+            }//System.out.println("codline liner:  "+codline+"\n");
 
             /*String b=".";
             int intIndexb = cadEnter.indexOf(b);
@@ -318,11 +319,11 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
             String c=",";
             int intIndexc = codline.indexOf(c);
             if(intIndexc != - 1){
-                System.out.println("palabra encontrada: "+c);
+                //System.out.println("palabra encontrada: "+c);
                 codline = codline.replaceAll(c,"");
             }else{
-                System.out.println("palabra no encontrada" + intIndexc+" : "+c);
-            }System.out.println("codline line:  "+codline+"\n");
+                //System.out.println("palabra no encontrada" + intIndexc+" : "+c);
+            }//System.out.println("codline line:  "+codline+"\n");
 
             /*String c=",";
             int intIndexc = cadEnter.indexOf(c);
@@ -336,11 +337,11 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
             String d="-";
             int intIndexd = codline.indexOf(d);
             if(intIndexd != - 1){
-                System.out.println("palabra encontrada: "+d);
+                //System.out.println("palabra encontrada: "+d);
                 codline = codline.replaceAll(d,"");
             }else{
-                System.out.println("palabra no encontrada" + intIndexd+" : "+d);
-            }System.out.println("codline line:  "+codline+"\n");
+                //System.out.println("palabra no encontrada" + intIndexd+" : "+d);
+            }//System.out.println("codline line:  "+codline+"\n");
 
             /*String d="-";
             int intIndexd = cadEnter.indexOf(d);
@@ -354,11 +355,11 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
             String e=";";
             int intIndexe = codline.indexOf(e);
             if(intIndexe != - 1){
-                System.out.println("palabra encontrada: "+e);
+                //System.out.println("palabra encontrada: "+e);
                 codline = codline.replaceAll(e,"");
             }else{
-                System.out.println("palabra no encontrada" + intIndexe+" : "+e);
-            }System.out.println("codline line:  "+codline+"\n");
+                //System.out.println("palabra no encontrada" + intIndexe+" : "+e);
+            }//System.out.println("codline line:  "+codline+"\n");
 
             /*String e=":";
             int intIndexe = cadEnter.indexOf(e);
@@ -372,11 +373,11 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
             String f="-";
             int intIndexf = codline.indexOf(f);
             if(intIndexf != - 1){
-                System.out.println("palabra encontrada: "+f);
+                //System.out.println("palabra encontrada: "+f);
                 codline = codline.replaceAll(f,"~");
             }else{
-                System.out.println("palabra no encontrada" + intIndexf+" : "+f);
-            }System.out.println("codline line:  "+codline+"\n");
+                //System.out.println("palabra no encontrada" + intIndexf+" : "+f);
+            }//System.out.println("codline line:  "+codline+"\n");
 
             /*String f="r";
             int intIndexf = cadEnter.indexOf(f);
@@ -390,29 +391,29 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
             String g="_";
             int intIndexg = codline.indexOf(g);
             if(intIndexg != - 1){
-                System.out.println("palabra encontrada: "+g);
+                //System.out.println("palabra encontrada: "+g);
                 codline = codline.replaceAll(g,"~");
             }else{
-                System.out.println("palabra no encontrada" + intIndexg+" : "+g);
+                //System.out.println("palabra no encontrada" + intIndexg+" : "+g);
             }System.out.println("codline line:  "+codline+"\n");
 
             String h=" ";
             int intIndexh = codline.indexOf(h);
             if(intIndexh != - 1){
-                System.out.println("palabra encontrada: "+h);
+                //System.out.println("palabra encontrada: "+h);
                 codline = codline.replaceAll(h,"~");
             }else{
-                System.out.println("palabra no encontrada" + intIndexh+" : "+h+"\n");
-            }System.out.println("codline line:  "+codline+"\n");
+                //System.out.println("palabra no encontrada" + intIndexh+" : "+h+"\n");
+            }//System.out.println("codline line:  "+codline+"\n");
 
             String l="~~";
             int intIndexl = codline.indexOf(l);
             if(intIndexl != - 1){
-                System.out.println("palabra encontrada: "+l);
+                //System.out.println("palabra encontrada: "+l);
                 codline = codline.replaceAll(l,"~");
             }else{
-                System.out.println("palabra no encontrada" + intIndexl+" : "+l);
-            }System.out.println("codline line:  "+codline+"\n");
+                //System.out.println("palabra no encontrada" + intIndexl+" : "+l);
+            }//System.out.println("codline line:  "+codline+"\n");
 
             //System.out.print("CadEnter: " + cadEnter + "\n");
             //System.out.print("Codigo: " + codigo + "\n");
@@ -424,16 +425,14 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
                 for (int q = 0; q < cadTamañoArray.length; q++) {
                     cadTamaño = cadTamaño + cadTamañoArray[q];
                 }
-                System.out.print("cadTamaño: " + cadTamaño + "\n");
+                //System.out.print("cadTamaño: " + cadTamaño + "\n");
             }catch(Exception e1){
                 e1.printStackTrace();
             }
             System.out.println("\n");
             for (int i = 0; i <cadTamañoArray.length ; i++) {
-                System.out.println((i+1)+".- "+cadTamañoArray[i]);
+                //System.out.println((i+1)+".- "+cadTamañoArray[i]);
             }
-
-
             txtPalabras.setText(Integer.toString(cadTamañoArray.length));
         }
     }
@@ -442,185 +441,147 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
     @Override
     public void handle(KeyEvent event)
     {
-        //System.out.print(event.getCode().getName()+"\n");
-        //System.out.print(event.getCode()+"\n");
-        if(banColor==false) {
-            System.out.print("__"+"\n");
-            System.out.print("|"+event.getText()+"|\n");
-            System.out.print("__"+"\n");
-            banColor=true;
-        }else{banColor=false;}
 
-        switch (event.getCode().toString()){
-            //Primer Renglon de teclas
-            case "ESCAPE": if(!banColor) { arBtnTeclado1[0].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado1[0].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "PRINTSCREEN": if(!banColor) { arBtnTeclado1[13].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado1[13].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "DELETE": if(!banColor) { arBtnTeclado1[14].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado1[14].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            //Segundo renglon de teclas
-            case "DIGIT1": if(!banColor) { arBtnTeclado2[1].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado2[1].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "DIGIT2": if(!banColor) { arBtnTeclado2[2].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado2[2].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "DIGIT3": if(!banColor) { arBtnTeclado2[3].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado2[3].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "DIGIT4": if(!banColor) { arBtnTeclado2[4].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado2[4].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "DIGIT5": if(!banColor) { arBtnTeclado2[5].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado2[5].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "DIGIT6": if(!banColor) { arBtnTeclado2[6].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado2[6].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "DIGIT7": if(!banColor) { arBtnTeclado2[7].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado2[7].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "DIGIT8": if(!banColor) { arBtnTeclado2[8].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado2[8].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "DIGIT9": if(!banColor) { arBtnTeclado2[9].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado2[9].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "DIGIT0": if(!banColor) { arBtnTeclado2[10].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado2[10].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "QUOTE": if(!banColor) { arBtnTeclado2[11].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado2[11].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            /*case "UNDEFINED": if(banColor==false) { arBtnTeclado2[14].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado2[14].setStyle("-fx-background-color: #666666;"); banColor=false; }break;*/
-            case "BACK_SPACE": if(!banColor) { arBtnTeclado2[13].setStyle("-fx-background-color: #0D1526;"); banColor=true; error++; txtErrores.setText(Integer.toString(error));/*CharsEntrantes.remove(UltimaLetraABorrar);*/
-                }else { arBtnTeclado2[13].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "HOME": if(!banColor) { arBtnTeclado2[14].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado2[14].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            //tercer renglon de teclas
-            case "TAB": if(!banColor) { arBtnTeclado3[0].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado3[0].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "Q": if(!banColor) { arBtnTeclado3[1].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado3[1].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "W": if(!banColor) { arBtnTeclado3[2].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado3[2].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "E": if(!banColor) { arBtnTeclado3[3].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado3[3].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "R": if(!banColor) { arBtnTeclado3[4].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado3[4].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "T": if(!banColor) { arBtnTeclado3[5].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado3[5].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "Y": if(!banColor) { arBtnTeclado3[6].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado3[6].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "U": if(!banColor) { arBtnTeclado3[7].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado3[7].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "I": if(!banColor) { arBtnTeclado3[8].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado3[8].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "O": if(!banColor) { arBtnTeclado3[9].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado3[9].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "P": if(!banColor) { arBtnTeclado3[10].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado3[10].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "DEAD_ACUTE": if(!banColor) { arBtnTeclado3[11].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado3[11].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "PLUS": if(!banColor) { arBtnTeclado3[12].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado3[12].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "ENTER": if(!banColor) { arBtnTeclado3[13].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado3[13].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "END": if(!banColor) { arBtnTeclado3[14].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado3[14].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            //Cuarta linea de teclas
-            case "CAPS": if(!banColor) { arBtnTeclado4[0].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado4[0].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "A": if(!banColor) { arBtnTeclado4[1].setStyle("-fx-background-color: #0D1526;");CharsEntrantes.add("a"); banColor=true;
-                }else { arBtnTeclado4[1].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "S": if(!banColor) { arBtnTeclado4[2].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado4[2].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "D": if(!banColor) { arBtnTeclado4[3].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado4[3].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "F": if(!banColor) { arBtnTeclado4[4].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado4[4].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "G": if(!banColor) { arBtnTeclado4[5].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado4[5].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "H": if(!banColor) { arBtnTeclado4[6].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado4[6].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "J": if(!banColor) { arBtnTeclado4[7].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado4[7].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "K": if(!banColor) { arBtnTeclado4[8].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado4[8].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "L": if(!banColor) { arBtnTeclado4[9].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado4[9].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            /*case "UNDEFINED":
-                if(banColor==false) { arBtnTeclado4[10].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado4[10].setStyle("-fx-background-color: #666666;"); banColor=false; }break;*/
-            case "BRACELEFT": if(!banColor) { arBtnTeclado4[11].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado4[11].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "BRACERIGHT": if(!banColor) { arBtnTeclado4[12].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado4[12].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "PAGE_UP": if(!banColor) { arBtnTeclado4[13].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado4[13].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            //Quinta linea de teclas
-            case "SHIFT": if(!banColor) { arBtnTeclado5[0].setStyle("-fx-background-color: #0D1526;"); arBtnTeclado5[12].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado5[0].setStyle("-fx-background-color: #666666;"); arBtnTeclado5[12].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "LESS": if(!banColor) { arBtnTeclado5[1].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado5[1].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "Z": if(!banColor) { arBtnTeclado5[2].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado5[2].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "X": if(!banColor) { arBtnTeclado5[3].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado5[3].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "C": if(!banColor) { arBtnTeclado5[4].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado5[4].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "V": if(!banColor) { arBtnTeclado5[5].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado5[5].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "B": if(!banColor) { arBtnTeclado5[6].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado5[6].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "N": if(!banColor) { arBtnTeclado5[7].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado5[7].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "M": if(!banColor) { arBtnTeclado5[8].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado5[8].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "COMMA": if(!banColor) { arBtnTeclado5[9].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado5[9].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "PERIOD": if(!banColor) { arBtnTeclado5[10].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado5[10].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "MINUS": if(!banColor) { arBtnTeclado5[11].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado5[11].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            /*case "SHIFT": if(banColor==false) { arBtnTeclado5[12].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado5[12].setStyle("-fx-background-color: #666666;"); banColor=false; }break;*/
-            case "UP": if(!banColor) { arBtnTeclado5[13].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado5[13].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "PAGE_DOWN": if(!banColor) { arBtnTeclado5[14].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado5[14].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            //Sexta linea de teclas
-            case "CONTROL": if(!banColor) { arBtnTeclado6[0].setStyle("-fx-background-color: #0D1526;"); arBtnTeclado6[4].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado6[0].setStyle("-fx-background-color: #666666;"); arBtnTeclado6[4].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "ALT": if(!banColor) { arBtnTeclado6[1].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado6[1].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "SPACE": if(!banColor) { arBtnTeclado6[2].setStyle("-fx-background-color: #0D1526;"); banColor=true; escritas++; txtPalabrasE.setText(Integer.toString(escritas));
-                }else { arBtnTeclado6[2].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            /*case "CONTROL ALT_GRAPH": if(banColor==false) { arBtnTeclado6[3].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado6[3].setStyle("-fx-background-color: #666666;"); banColor=false; }break;*/
-            case "CONTEXT_MENU": if(!banColor) { arBtnTeclado6[3].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado6[3].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            /*case "CONTROL": if(banColor==false) { arBtnTeclado6[5].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado6[5].setStyle("-fx-background-color: #666666;"); banColor=false; }break;*/
-            case "LEFT": if(!banColor) { arBtnTeclado6[5].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado6[5].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "DOWN": if(!banColor) { arBtnTeclado6[6].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado6[6].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "RIGHT": if(!banColor) { arBtnTeclado6[7].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-                }else { arBtnTeclado6[7].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-        }
-        switch (event.getText()){
-            case "¿": if(!banColor) { arBtnTeclado2[12].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-            }else { arBtnTeclado2[12].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "ñ": if(!banColor) { arBtnTeclado4[10].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-            }else { arBtnTeclado4[10].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-        }
+            //System.out.print(event.getCode().getName()+"\n");
+            //System.out.print(event.getCode()+"\n");
+            if (banColor) {
+                //System.out.print("__"+"\n");
+                //System.out.print("|"+event.getText()+"|"+"\n");
+                //System.out.print("__"+"\n");
+                banColor = true;
+            } else {
+                banColor = false;
+            }
 
-        //System.out.print(event.getCode().getName()+"\n\n");
+            if (banColor) {
+                //System.out.println("sds "+CharsEntrantes.size()+"\n");
+                for (int i = 0; i < CharsEntrantes.size(); i++) {
+                    //System.out.print(CharsEntrantes.get(i));
+                }
+                //System.out.println("\n");
+                banColor = true;
+            } else {
+                banColor = false;
+            }
+
+            switch (event.getCode().toString()) {
+                //Primer Renglon de teclas
+                case "ESCAPE": if (!banColor) { arBtnTeclado1[0].setStyle("-fx-background-color: #0D1526;");banColor = true; } else { arBtnTeclado1[0].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "PRINTSCREEN": if (!banColor) { arBtnTeclado1[13].setStyle("-fx-background-color: #0D1526;");banColor = true; } else { arBtnTeclado1[13].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "DELETE": if (!banColor) { arBtnTeclado1[14].setStyle("-fx-background-color: #0D1526;");banColor = true; } else { arBtnTeclado1[14].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                //Segundo renglon de teclas
+                case "DIGIT1": if (!banColor) { arBtnTeclado2[1].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado2[1].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "DIGIT2": if (!banColor) { arBtnTeclado2[2].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado2[2].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "DIGIT3": if (!banColor) { arBtnTeclado2[3].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado2[3].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "DIGIT4": if (!banColor) { arBtnTeclado2[4].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado2[4].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "DIGIT5": if (!banColor) { arBtnTeclado2[5].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado2[5].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "DIGIT6": if (!banColor) { arBtnTeclado2[6].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado2[6].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "DIGIT7": if (!banColor) { arBtnTeclado2[7].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado2[7].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "DIGIT8": if (!banColor) { arBtnTeclado2[8].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado2[8].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "DIGIT9": if (!banColor) { arBtnTeclado2[9].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado2[9].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "DIGIT0": if (!banColor) { arBtnTeclado2[10].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado2[10].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "QUOTE": if (!banColor) { arBtnTeclado2[11].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado2[11].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+              /*case "UNDEFINED": if(banColor==false) { arBtnTeclado2[14].setStyle("-fx-background-color: #0D1526;"); banColor=true;}else { arBtnTeclado2[14].setStyle("-fx-background-color: #666666;"); banColor=false; }break;*/
+                case "BACK_SPACE": if (!banColor) { arBtnTeclado2[13].setStyle("-fx-background-color: #0D1526;");banColor = true;error++;txtErrores.setText(Integer.toString(error));if (CharsEntrantes.size() >= 0) { CharsEntrantes.remove(CharsEntrantes.size() - 1); } else { } } else { arBtnTeclado2[13].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "HOME": if (!banColor) { arBtnTeclado2[14].setStyle("-fx-background-color: #0D1526;");banColor = true; } else { arBtnTeclado2[14].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                //tercer renglon de teclas
+                case "TAB": if (!banColor) { arBtnTeclado3[0].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado3[0].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "Q": if (!banColor) { arBtnTeclado3[1].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado3[1].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "W": if (!banColor) { arBtnTeclado3[2].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado3[2].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "E": if (!banColor) { arBtnTeclado3[3].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado3[3].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "R": if (!banColor) { arBtnTeclado3[4].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado3[4].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "T": if (!banColor) { arBtnTeclado3[5].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado3[5].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "Y": if (!banColor) { arBtnTeclado3[6].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado3[6].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "U": if (!banColor) { arBtnTeclado3[7].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado3[7].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "I": if (!banColor) { arBtnTeclado3[8].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado3[8].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "O": if (!banColor) { arBtnTeclado3[9].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado3[9].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "P": if (!banColor) { arBtnTeclado3[10].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado3[10].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "DEAD_ACUTE": if (!banColor) { arBtnTeclado3[11].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado3[11].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "PLUS": if (!banColor) { arBtnTeclado3[12].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado3[12].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "ENTER": if (!banColor) { arBtnTeclado3[13].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado3[13].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "END": if (!banColor) { arBtnTeclado3[14].setStyle("-fx-background-color: #0D1526;");banColor = true; } else { arBtnTeclado3[14].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                //Cuarta linea de teclas
+                case "CAPS": if (!banColor) { arBtnTeclado4[0].setStyle("-fx-background-color: #0D1526;");banColor = true; } else { arBtnTeclado4[0].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "A": if (!banColor) { arBtnTeclado4[1].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado4[1].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "S": if (!banColor) { arBtnTeclado4[2].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado4[2].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "D": if (!banColor) { arBtnTeclado4[3].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado4[3].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "F": if (!banColor) { arBtnTeclado4[4].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado4[4].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "G": if (!banColor) { arBtnTeclado4[5].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado4[5].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "H": if (!banColor) { arBtnTeclado4[6].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado4[6].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "J": if (!banColor) { arBtnTeclado4[7].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado4[7].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "K": if (!banColor) { arBtnTeclado4[8].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado4[8].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "L": if (!banColor) { arBtnTeclado4[9].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado4[9].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+            /*case "UNDEFINED":if(banColor==false) { arBtnTeclado4[10].setStyle("-fx-background-color: #0D1526;"); banColor=true;}else { arBtnTeclado4[10].setStyle("-fx-background-color: #666666;"); banColor=false; }break;*/
+                case "BRACELEFT": if (!banColor) { arBtnTeclado4[11].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado4[11].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "BRACERIGHT": if (!banColor) { arBtnTeclado4[12].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado4[12].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "PAGE_UP": if (!banColor) { arBtnTeclado4[13].setStyle("-fx-background-color: #0D1526;");banColor = true; } else { arBtnTeclado4[13].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                //Quinta linea de teclas
+                case "SHIFT": if (!banColor) { arBtnTeclado5[0].setStyle("-fx-background-color: #0D1526;");arBtnTeclado5[12].setStyle("-fx-background-color: #0D1526;");banColor = true; } else { arBtnTeclado5[0].setStyle("-fx-background-color: #666666;");arBtnTeclado5[12].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "LESS": if (!banColor) { arBtnTeclado5[1].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado5[1].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "Z": if (!banColor) { arBtnTeclado5[2].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado5[2].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "X": if (!banColor) { arBtnTeclado5[3].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado5[3].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "C": if (!banColor) { arBtnTeclado5[4].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado5[4].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "V": if (!banColor) { arBtnTeclado5[5].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado5[5].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "B": if (!banColor) { arBtnTeclado5[6].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado5[6].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "N": if (!banColor) { arBtnTeclado5[7].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado5[7].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "M": if (!banColor) { arBtnTeclado5[8].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado5[8].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "COMMA": if (!banColor) { arBtnTeclado5[9].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado5[9].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "PERIOD": if (!banColor) { arBtnTeclado5[10].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado5[10].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "MINUS": if (!banColor) { arBtnTeclado5[11].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado5[11].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+            /*case "SHIFT": if(banColor==false) { arBtnTeclado5[12].setStyle("-fx-background-color: #0D1526;"); banColor=true;}else { arBtnTeclado5[12].setStyle("-fx-background-color: #666666;"); banColor=false; }break;*/
+                case "UP": if (!banColor) { arBtnTeclado5[13].setStyle("-fx-background-color: #0D1526;");banColor = true; } else { arBtnTeclado5[13].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "PAGE_DOWN": if (!banColor) { arBtnTeclado5[14].setStyle("-fx-background-color: #0D1526;");banColor = true; } else { arBtnTeclado5[14].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                //Sexta linea de teclas
+                case "CONTROL": if (!banColor) { arBtnTeclado6[0].setStyle("-fx-background-color: #0D1526;");arBtnTeclado6[4].setStyle("-fx-background-color: #0D1526;");banColor = true; } else { arBtnTeclado6[0].setStyle("-fx-background-color: #666666;");arBtnTeclado6[4].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "ALT": if (!banColor) { arBtnTeclado6[1].setStyle("-fx-background-color: #0D1526;");banColor = true; } else { arBtnTeclado6[1].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "SPACE": if (!banColor) { arBtnTeclado6[2].setStyle("-fx-background-color: #0D1526;");banColor = true;escritas++;txtPalabrasE.setText(Integer.toString(escritas));CharsEntrantes.add(event.getText()); } else { arBtnTeclado6[2].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+            /*case "CONTROL ALT_GRAPH": if(banColor==false) { arBtnTeclado6[3].setStyle("-fx-background-color: #0D1526;"); banColor=true;}else { arBtnTeclado6[3].setStyle("-fx-background-color: #666666;"); banColor=false; }break;*/
+                case "CONTEXT_MENU": if (!banColor) { arBtnTeclado6[3].setStyle("-fx-background-color: #0D1526;");banColor = true; } else { arBtnTeclado6[3].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+            /*case "CONTROL": if(banColor==false) { arBtnTeclado6[5].setStyle("-fx-background-color: #0D1526;"); banColor=true;}else { arBtnTeclado6[5].setStyle("-fx-background-color: #666666;"); banColor=false; }break;*/
+                case "LEFT": if (!banColor) { arBtnTeclado6[5].setStyle("-fx-background-color: #0D1526;");banColor = true; } else { arBtnTeclado6[5].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "DOWN": if (!banColor) { arBtnTeclado6[6].setStyle("-fx-background-color: #0D1526;");banColor = true; } else { arBtnTeclado6[6].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "RIGHT": if (!banColor) { arBtnTeclado6[7].setStyle("-fx-background-color: #0D1526;");banColor = true; } else { arBtnTeclado6[7].setStyle("-fx-background-color: #666666;");banColor = false; }break; }
+            switch (event.getText()) {
+                case "¿": if (!banColor) { arBtnTeclado2[12].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado2[12].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+                case "ñ": if (!banColor) { arBtnTeclado4[10].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado4[10].setStyle("-fx-background-color: #666666;");banColor = false; }break;
+            }
+
+            //System.out.print(event.getCode().getName()+"\n\n");
             //CharsEntrantes.add(event.getText());
 
-        while(CharsEntrantes.size()>1) {
-            if (banColor1 == false) {
-                for (int i = 0; i < CharsEntrantes.size(); i++) {
-                    System.out.print("/" + CharsEntrantes.get(i));
+          //while (CharsEntrantes.size() != 0) {
+        System.out.println("uurl"+uurl+"\n");
+
+
+        if (banColor) {
+            if(uurl.compareTo("null")!=0){
+            String h=event.getCode().getName();
+            if(h.compareTo("Backspace")!=0) {
+                String save = String.valueOf(caracterChar.get(o)), entrada = event.getText();
+                if (save.compareTo(entrada) == 0) {
+                    System.out.println("CharText: " + event.getText());
+                    System.out.print("o:" + o + " ");
+                    System.out.println("charG: " + caracterChar.get(o));
+                    System.out.println("los caracteres son iguales " + "\n");
+                    o = o + 1;
+                } else {
+                    System.out.println("CharText: " + event.getText());
+                    System.out.print("o:" + o + " ");
+                    System.out.println("charE: " + caracterChar.get(o));
+                    System.out.println("los caracteres NO son iguales " + "\n");
+                    o = o - 1;
                 }
-                banColor1 = true;
-            } else {
-                banColor1 = false;
             }
+            }else{o = o - 1;
+                System.out.println("funciono en bloquear el back space");}
+            banColor = true;
+        } else {
+            banColor = false;
         }
 
+
+
+            //}
 
     }
     private void Time(){
