@@ -21,7 +21,7 @@ import static java.lang.String.*;
 public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
 
     //Bandera para detectar cambios
-    boolean banColor;
+    boolean banColor,banColor1;
 
     //Arreglos para etiquetar los bonotes
     private String[] arLblBtn1 ={"ESC","F1","F2","F3","F4","F5","F6","F7","F8","F9","F10","F11","F12","IMP PNT","SUPR"};
@@ -60,12 +60,17 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
     int error=0,escritas=0,palabrasT=0;
     Scene escena;
 
+    //Cadena Entrante
+    ArrayList CharsEntrantes=new ArrayList();
+    int UltimaLetraABorrar=CharsEntrantes.size();
+
     public Taquimecanografo(){
         CrearGUI();
         this.setTitle("Tutor taquimecanografo");
         this.setScene(escena);
         this.show();
         banColor = false;
+        banColor1 = false;
     }
 
     private void CrearGUI(){
@@ -249,7 +254,7 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
             System.out.println("cadEnter: "+cadEnter+"\n");
 
             //------------------------------------------------------------------
-            System.out.println("Split para quitar los enters"+"\n");
+            System.out.println("Mostrar arraySplit para quitar los enters");
             for (int i = 0; i <cadenalineArray.length ; i++) {
                 System.out.println((i+1)+".- "+cadenalineArray[i]);
             }System.out.println("\n");
@@ -258,16 +263,17 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
             for (int x=0;x<codline.length();x++){
                 //System.out.println("Caracter " + x + ": " + codline.charAt(x));
                 caracterChar.add(x,codline.charAt(x));
-            }System.out.println("\n");
+            }//System.out.println("\n");
 
             //------mostar el arreglo de chars de la candena para comparar con la cadena entrante-------------------------
             for (int i = 0; i <caracterChar.size(); i++) {
-                System.out.println(i+".- "+caracterChar.get(i));
+                System.out.println("Arreglo chars"+"\n");
+                System.out.print(i+".- "+caracterChar.get(i)+"\n");
             }System.out.println("\n");
 
             //-------Total de chars del txt para saber si se copio el texto completo--------------------------------------------------------------
             int TotalCaracteres=caracterChar.size();
-            System.out.println("TotalChaer: "+TotalCaracteres);
+            System.out.println("TotalChars: "+TotalCaracteres);
             System.out.println("\n");
 
             //---------------------------------------------------------------------
@@ -280,6 +286,7 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
                 System.out.println("palabra no encontrada" + intIndexa + " : " + a);
             }
             System.out.println("codline line:  "+codline+"\n");
+
             //-----------------------------------------------------------------------
             /*String a="\n";
             int intIndexa = cadEnter.indexOf(a);
@@ -437,6 +444,12 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
     {
         //System.out.print(event.getCode().getName()+"\n");
         //System.out.print(event.getCode()+"\n");
+        if(banColor==false) {
+            System.out.print("__"+"\n");
+            System.out.print("|"+event.getText()+"|\n");
+            System.out.print("__"+"\n");
+            banColor=true;
+        }else{banColor=false;}
 
         switch (event.getCode().toString()){
             //Primer Renglon de teclas
@@ -471,7 +484,7 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
                 }else { arBtnTeclado2[11].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
             /*case "UNDEFINED": if(banColor==false) { arBtnTeclado2[14].setStyle("-fx-background-color: #0D1526;"); banColor=true;
                 }else { arBtnTeclado2[14].setStyle("-fx-background-color: #666666;"); banColor=false; }break;*/
-            case "BACK_SPACE": if(!banColor) { arBtnTeclado2[13].setStyle("-fx-background-color: #0D1526;"); banColor=true; error++; txtErrores.setText(Integer.toString(error));
+            case "BACK_SPACE": if(!banColor) { arBtnTeclado2[13].setStyle("-fx-background-color: #0D1526;"); banColor=true; error++; txtErrores.setText(Integer.toString(error));/*CharsEntrantes.remove(UltimaLetraABorrar);*/
                 }else { arBtnTeclado2[13].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
             case "HOME": if(!banColor) { arBtnTeclado2[14].setStyle("-fx-background-color: #0D1526;"); banColor=true;
                 }else { arBtnTeclado2[14].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
@@ -509,7 +522,7 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
             //Cuarta linea de teclas
             case "CAPS": if(!banColor) { arBtnTeclado4[0].setStyle("-fx-background-color: #0D1526;"); banColor=true;
                 }else { arBtnTeclado4[0].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-            case "A": if(!banColor) { arBtnTeclado4[1].setStyle("-fx-background-color: #0D1526;"); banColor=true;
+            case "A": if(!banColor) { arBtnTeclado4[1].setStyle("-fx-background-color: #0D1526;");CharsEntrantes.add("a"); banColor=true;
                 }else { arBtnTeclado4[1].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
             case "S": if(!banColor) { arBtnTeclado4[2].setStyle("-fx-background-color: #0D1526;"); banColor=true;
                 }else { arBtnTeclado4[2].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
@@ -587,12 +600,27 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
             case "RIGHT": if(!banColor) { arBtnTeclado6[7].setStyle("-fx-background-color: #0D1526;"); banColor=true;
                 }else { arBtnTeclado6[7].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
         }
-        /*switch (event.getCode().getName().toString()){
-            case "Alt Graph": if(banColor==false) { arBtnTeclado6[3].setStyle("-fx-background-color: #0D1526;"); banColor=true;
-            }else { arBtnTeclado6[3].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
-        }*/
+        switch (event.getText()){
+            case "¿": if(!banColor) { arBtnTeclado2[12].setStyle("-fx-background-color: #0D1526;"); banColor=true;
+            }else { arBtnTeclado2[12].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
+            case "ñ": if(!banColor) { arBtnTeclado4[10].setStyle("-fx-background-color: #0D1526;"); banColor=true;
+            }else { arBtnTeclado4[10].setStyle("-fx-background-color: #666666;"); banColor=false; }break;
+        }
 
         //System.out.print(event.getCode().getName()+"\n\n");
+            //CharsEntrantes.add(event.getText());
+
+        while(CharsEntrantes.size()>1) {
+            if (banColor1 == false) {
+                for (int i = 0; i < CharsEntrantes.size(); i++) {
+                    System.out.print("/" + CharsEntrantes.get(i));
+                }
+                banColor1 = true;
+            } else {
+                banColor1 = false;
+            }
+        }
+
 
     }
     private void Time(){

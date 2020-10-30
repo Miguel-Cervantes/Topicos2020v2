@@ -12,6 +12,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import sample.models.Conexion;
 import sample.ui.Memorama;
 import sample.ui.Taquimecanografo;
 
@@ -36,6 +37,8 @@ public class Main extends Application implements EventHandler<WindowEvent>
         primaryStage.setScene(escena);
         primaryStage.addEventHandler(WindowEvent.ANY,this);
         primaryStage.show();
+
+        //Conexion.CrearConexion();
         }
         private void CrearUI() {
         mnbProyecto= new MenuBar();
