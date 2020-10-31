@@ -77,6 +77,18 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
     }
 
     private void CrearGUI(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("HORA DE ESCRIBIR!!");
+        alert.setHeaderText("GRACIAS POR USAR EL TUTOR TAQUIMECANOGRAFO");
+        alert.setContentText("Bienvenido!!");
+        alert.showAndWait();
+
+        Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("INFORMACION!!");
+        alert.setHeaderText(null);
+        alert.setContentText("Al terminar de escribir tu texto presiona Enter");
+        alert.showAndWait();
+
         CrearToolbar();
         CrearHBoxInfo();
         CrearEscritura();
