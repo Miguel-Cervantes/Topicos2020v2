@@ -663,6 +663,5 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
         }catch(Exception e){e.printStackTrace();}
 
             //}
-
     }}
 }
