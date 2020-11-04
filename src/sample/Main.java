@@ -15,13 +15,14 @@ import javafx.stage.WindowEvent;
 import sample.models.Conexion;
 import sample.ui.Memorama;
 import sample.ui.Taquimecanografo;
+import sample.ui.Dashboard;
 
 public class Main extends Application implements EventHandler<WindowEvent>
 {
     private VBox vPrincipal;
     private MenuBar mnbProyecto;
     private Menu menCompetencia1,menCompetencia2,menSalir;
-    private MenuItem mitPractica1,mitPractica2,mitPractica3,mitAdios;
+    private MenuItem mitPractica1,mitPractica2,mitPractica3,itmRestaurante,mitAdios;
     private Scene escena;
 
     private BorderPane brpPrincipal;
@@ -38,7 +39,7 @@ public class Main extends Application implements EventHandler<WindowEvent>
         primaryStage.addEventHandler(WindowEvent.ANY,this);
         primaryStage.show();
 
-        //Conexion.CrearConexion();
+        Conexion.CrearConexion();
         }
         private void CrearUI() {
         mnbProyecto= new MenuBar();
@@ -60,7 +61,7 @@ public class Main extends Application implements EventHandler<WindowEvent>
         mitPractica2=new MenuItem("Taquimecanografo");
         mitPractica2.setOnAction(event -> OpcionMenu(2));
 
-        mitPractica3=new MenuItem("vacio");
+        mitPractica3=new MenuItem("Dashboard");
         mitPractica3.setOnAction(event -> OpcionMenu(3));
 
         mitAdios=new MenuItem("Adios");
@@ -108,23 +109,10 @@ public class Main extends Application implements EventHandler<WindowEvent>
     {
         switch(i)
         {
-            case 1:
-                new Memorama();
-
-                break;
-            case 2:
-                new Taquimecanografo();
-
-                break;
-            case 3:
-                Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
-                alert2.setTitle("Dialogo Informativo");
-                alert2.setHeaderText(null);
-                alert2.setContentText("El Campo esta vacio por el momento");
-                alert2.showAndWait();
-                break;
-            case 20:
-                System.exit(0);
+            case 1: new Memorama();break;
+            case 2: new Taquimecanografo();break;
+            case 3: new Dashboard();break;
+            case 20: System.exit(0);
         }
     }
 

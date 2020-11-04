@@ -613,10 +613,11 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
             if(caracterChar.size()!=0){
             String h=event.getCode().getName();
             if(h.compareTo("Backspace")!=0) {
+                if(CharsEntrantes.size()+1<caracterChar.size()+1){
                 String save = String.valueOf(caracterChar.get(o));/*, entrada = event.getText()*/
-                String neww= String.valueOf(CharsEntrantes.get(o));
+                String neww = String.valueOf(CharsEntrantes.get(o));
                 if (save.compareToIgnoreCase(neww) == 0) {
-                //if (save.compareTo(entrada) == 0) {
+                    //if (save.compareTo(entrada) == 0) {
                     System.out.println("CharText: " + event.getText());
                     System.out.print("o:" + o + " ");
                     System.out.println("charG: " + caracterChar.get(o));
@@ -631,19 +632,21 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
                 }
 
                 //----Texto correcto y su muestra------------------------------------------------------
-                if(caracterChar.size()==CharsEntrantes.size()){
+                if (caracterChar.size() == CharsEntrantes.size()) {
 
-                    String TextoEntero = "",TextoEnteroOriginal="";
-                    for (int i = 0; i < caracterChar.size(); i++)
-                    { TextoEnteroOriginal = TextoEnteroOriginal+ caracterChar.get(i); }
+                    String TextoEntero = "", TextoEnteroOriginal = "";
+                    for (int i = 0; i < caracterChar.size(); i++) {
+                        TextoEnteroOriginal = TextoEnteroOriginal + caracterChar.get(i);
+                    }
 
-                    for (int i = 0; i < CharsEntrantes.size(); i++)
-                    { TextoEntero = TextoEntero + CharsEntrantes.get(i); }
+                    for (int i = 0; i < CharsEntrantes.size(); i++) {
+                        TextoEntero = TextoEntero + CharsEntrantes.get(i);
+                    }
 
-                    System.out.println(TextoEntero+"/");
-                    System.out.println(TextoEnteroOriginal+"/");
+                    System.out.println(TextoEntero + "/");
+                    System.out.println(TextoEnteroOriginal + "/");
 
-                    if(TextoEnteroOriginal.compareToIgnoreCase(TextoEntero)==0) {
+                    if (TextoEnteroOriginal.compareToIgnoreCase(TextoEntero) == 0) {
 
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("Has terminado tu Texto!!");
@@ -654,6 +657,7 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
                 }
                 //--------------------------------------------------------------------------------------
 
+            }
             }else{;System.out.println("funciono en bloquear el back space"); }
             }
             banColor = true;
