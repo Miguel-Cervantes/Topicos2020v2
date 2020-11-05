@@ -45,7 +45,7 @@ public class Main extends Application implements EventHandler<WindowEvent>
         mnbProyecto= new MenuBar();
 
         menCompetencia1=new Menu("Primer Parcial");
-        menCompetencia2=new Menu("Segundo Parcial(Vacio)");
+        menCompetencia2=new Menu("Segundo Parcial");
         menSalir=new Menu("Salir");
 
         mnbProyecto.getMenus().addAll(menCompetencia1,menCompetencia2,menSalir);
