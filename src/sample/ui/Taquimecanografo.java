@@ -234,6 +234,7 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
         txtPalabrasE.setText(Integer.toString(escritas));
         caracterChar.clear();
         CharsEntrantes.clear();
+        o=0;
 
         if(!uurl.equals("null")){
 
@@ -282,11 +283,12 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
 
             //------Meter los chars de la cadena en un array-----------------------------------------------------------
             if(caracterChar.size()!=0){caracterChar.clear();}
+            //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%555
             for (int x=0;x<codline.length();x++){
                 //System.out.println("Caracter " + x + ": " + codline.charAt(x));
                 caracterChar.add(x,codline.charAt(x));
             }//System.out.println("\n");
-
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             //------mostar el arreglo de chars de la candena para comparar con la cadena entrante-------------------------
             System.out.println("Arreglo chars"+"\n");
             for (int i = 0; i <caracterChar.size(); i++) {
@@ -474,8 +476,8 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
                 banColor = false;
             }
 
-            if (banColor) {
-                System.out.println("sds "+CharsEntrantes.size()+"\n");
+            /*if (banColor) {
+                System.out.println("charEntrantes "+CharsEntrantes.size()+"\n");
                 for (int i = 0; i < CharsEntrantes.size(); i++) {
                     //System.out.print(CharsEntrantes.get(i));
                 }
@@ -483,7 +485,7 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
                 banColor = true;
             } else {
                 banColor = false;
-            }
+            }*/
 
             switch (event.getCode().toString()) {
                 //Primer Renglon de teclas
@@ -528,10 +530,10 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
                 case "DEAD_ACUTE": if (!banColor) { arBtnTeclado3[11].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado3[11].setStyle("-fx-background-color: #666666;");banColor = false; }break;
                 case "PLUS": if (!banColor) { arBtnTeclado3[12].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add(event.getText()); } else { arBtnTeclado3[12].setStyle("-fx-background-color: #666666;");banColor = false; }break;
                 case "ENTER": if (!banColor) { arBtnTeclado3[13].setStyle("-fx-background-color: #0D1526;");banColor = true;CharsEntrantes.add("\n");
-                    String w=" ",z= String.valueOf(CharsEntrantes.get(CharsEntrantes.size()-1));
+                    String w="\n",z= String.valueOf(CharsEntrantes.get(CharsEntrantes.size()-1));
                     if(CharsEntrantes.size()>1){
                         System.out.println("z: "+z);
-                        if(z.compareToIgnoreCase(w)!=0){
+                        if(z.compareToIgnoreCase(w)==0){
                             escritas++;}
                     }
                     txtPalabrasE.setText(Integer.toString(escritas));
@@ -613,7 +615,7 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
             if(caracterChar.size()!=0){
             String h=event.getCode().getName();
             if(h.compareTo("Backspace")!=0) {
-                if(CharsEntrantes.size()+1<caracterChar.size()+1){
+                if(CharsEntrantes.size()+1<=caracterChar.size()+1){
                 String save = String.valueOf(caracterChar.get(o));/*, entrada = event.getText()*/
                 String neww = String.valueOf(CharsEntrantes.get(o));
                 if (save.compareToIgnoreCase(neww) == 0) {
@@ -632,7 +634,10 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
                 }
 
                 //----Texto correcto y su muestra------------------------------------------------------
-                if (caracterChar.size() == CharsEntrantes.size()) {
+                    System.out.println("txt size: "+caracterChar.size());
+                    System.out.println("teclas size: "+CharsEntrantes.size());
+                    if (caracterChar.size() == CharsEntrantes.size()) {
+                    System.out.println("arrays iguales");
 
                     String TextoEntero = "", TextoEnteroOriginal = "";
                     for (int i = 0; i < caracterChar.size(); i++) {
@@ -643,22 +648,29 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
                         TextoEntero = TextoEntero + CharsEntrantes.get(i);
                     }
 
-                    System.out.println(TextoEntero + "/");
-                    System.out.println(TextoEnteroOriginal + "/");
+                    System.out.println("-"+TextoEntero + "/");
+                    System.out.println("-"+TextoEnteroOriginal + "/");
 
                     if (TextoEnteroOriginal.compareToIgnoreCase(TextoEntero) == 0) {
+                    //if (TextoEntero.compareToIgnoreCase(TextoEnteroOriginal) == 0) {
 
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("Has terminado tu Texto!!");
                         alert.setHeaderText(null);
                         alert.setContentText("Tu texto es: " + "\n" + TextoEntero);
                         alert.showAndWait();
+                        caracterChar.clear();
+                        CharsEntrantes.clear();
+                        o=0;
+                        banColor=false;
                     }
                 }
                 //--------------------------------------------------------------------------------------
 
             }
+
             }else{;System.out.println("funciono en bloquear el back space"); }
+
             }
             banColor = true;
         } else {
@@ -667,5 +679,27 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
         }catch(Exception e){e.printStackTrace();}
 
             //}
+
+        /*if (banColor) {
+
+            String TextoEntero1 = "", TextoEnteroOriginal1 = "";
+            for (int i = 0; i < caracterChar.size(); i++) {
+                TextoEnteroOriginal1 = TextoEnteroOriginal1 + caracterChar.get(i);
+            }
+
+            for (int i = 0; i < CharsEntrantes.size(); i++) {
+                TextoEntero1 = TextoEntero1 + CharsEntrantes.get(i);
+            }
+
+            System.out.println("--"+TextoEnteroOriginal1 + "/");
+            System.out.println("--"+TextoEntero1 + "/");
+
+
+
+            banColor = true;
+        } else {
+            banColor = false;
+        }*/
+
     }}
 }
