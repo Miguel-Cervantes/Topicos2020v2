@@ -659,10 +659,9 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
                         alert.setHeaderText(null);
                         alert.setContentText("Tu texto es: " + "\n" + TextoEntero);
                         alert.showAndWait();
-                        caracterChar.clear();
-                        CharsEntrantes.clear();
+
                         o=0;
-                        banColor=false;
+
                     }
                 }
                 //--------------------------------------------------------------------------------------
