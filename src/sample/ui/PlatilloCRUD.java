@@ -50,6 +50,7 @@ public class PlatilloCRUD extends Stage {
         tbcPrecioPlatillo.setCellValueFactory(new PropertyValueFactory<>("precio"));
 
         tbvPlatillo.getColumns().addAll(tbcIdPlatillo,tbcNomPlatillo,tbcPrecioPlatillo);
+        tbvPlatillo.setId("my-table");
         tbvPlatillo.setItems(objPDAO.getAllPlatillo());
 
     }

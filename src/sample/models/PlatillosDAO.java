@@ -26,6 +26,7 @@ public class PlatillosDAO {
     public void delPlatillo(){}
     public ObservableList<PlatillosDAO> getAllPlatillo(){
         ObservableList<PlatillosDAO> listaP = FXCollections.observableArrayList();
+
         try{
             PlatillosDAO objP;
             String query ="select * from tbl_platillos order by nombre_platillo";
