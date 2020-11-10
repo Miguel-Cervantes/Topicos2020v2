@@ -18,7 +18,7 @@ import sample.ui.Taquimecanografo;
 import sample.ui.Dashboard;
 
 //repositorio
-/* https://github.com/Miguel-Cervantes/Topicos2020v2.git */
+/* https://github.com/Miguel-Cervantes/Topicos2020v2.git :) */
 
 public class Main extends Application implements EventHandler<WindowEvent>
 {
