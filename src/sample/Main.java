@@ -13,9 +13,9 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import sample.models.Conexion;
+import sample.ui.Dashboard;
 import sample.ui.Memorama;
 import sample.ui.Taquimecanografo;
-import sample.ui.Dashboard;
 
 //repositorio
 /* https://github.com/Miguel-Cervantes/Topicos2020v2.git :) */
