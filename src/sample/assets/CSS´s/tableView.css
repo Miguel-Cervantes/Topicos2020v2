@@ -1,0 +1,5 @@
+#my-table .table-cell {
+     -fx-alignment: CENTER-RIGHT;
+        /* The rest is from caspian.css */
+        -fx-cell-color: #666666;
+}

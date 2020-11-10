@@ -1,0 +1,54 @@
+.root
+{
+    -fx-base: #666666;
+}
+
+.text-area{
+     -fx-pref-height: 700;
+     -fx-pref-width: 100;
+}
+.button:hover{
+
+}
+#ButtonWidthSpace{
+    -fx-pref-width: 220;
+}
+#ButtonWidthCtrl{
+    -fx-pref-width: 65;
+}
+#ButtonWidthShift{
+    -fx-pref-width: 65;
+}
+#ButtonWidth1{
+    -fx-pref-width: 36;
+}
+#ButtonWidthTecla{
+     -fx-pref-width: 29;
+}
+#ButtonWidthBM{
+     -fx-pref-width: 90;
+}
+#ButtonWidthTecla4{
+     -fx-pref-width: 31;
+}
+#ButtonWidthTeclaRePag{
+     -fx-pref-width: 67;
+}
+#ButtonWidthTecla3{
+     -fx-pref-width: 29;
+}
+#ButtonWidthEnter{
+     -fx-pref-width: 68;
+}
+#ButtonWidth2{
+     -fx-pref-width: 31;
+}
+#ButtonWidth5{
+     -fx-pref-width: 33;
+}
+#ButtonWidthBorrar{
+     -fx-pref-width: 69;
+}
+#ButtonWidthESC{
+     -fx-pref-width: 54;
+}
