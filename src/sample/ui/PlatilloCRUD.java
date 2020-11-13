@@ -12,8 +12,6 @@ import javafx.util.Callback;
 import sample.components.ButtonCustome;
 import sample.models.PlatillosDAO;
 
-import static jdk.nashorn.internal.objects.NativeFunction.call;
-
 public class PlatilloCRUD extends Stage {
 
     private VBox vBox;
@@ -38,7 +36,7 @@ public class PlatilloCRUD extends Stage {
         vBox=new VBox();
         vBox.getChildren().addAll(tbvPlatillo,btnNuevo);
         escena=new Scene(vBox,465,250);
-        escena.getStylesheets().add("sample/assets/CSS´s/FrmPlatillos.css");
+        escena.getStylesheets().add("sample/assets/CSS´s/PlatilloCRUD.css");
 
     }
 
