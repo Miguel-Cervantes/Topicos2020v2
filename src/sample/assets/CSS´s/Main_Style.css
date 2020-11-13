@@ -3,11 +3,18 @@
 {
     //-fx-background-image: url("http://www.baltana.com/files/wallpapers-7/Brooklyn-Bridge-Black-And-White-Best-Wallpaper-23387.jpg");
     //-fx-background-image: url("https://wallpapercave.com/wp/wp2239287.jpg");
-    -fx-background-image: url("https://2.bp.blogspot.com/-bXrSrE4i-c0/XKWyJK-CPQI/AAAAAAAACLo/pxEZQAK4Dy8sHMuZDt3KzH5zxIZ8Xw9kwCLcBGAs/s1600/agujero-negro.jpg");
-    -fx-background-size: cover,cover;
+
+    //-fx-background-image: url("https://2.bp.blogspot.com/-bXrSrE4i-c0/XKWyJK-CPQI/AAAAAAAACLo/pxEZQAK4Dy8sHMuZDt3KzH5zxIZ8Xw9kwCLcBGAs/s1600/agujero-negro.jpg"), url("http://itcelaya.edu.mx/jornadabioquimica/wp-content/uploads/2019/07/cropped-LOGO-ITC.png");
+
+    -fx-background-image: url("http://www.baltana.com/files/wallpapers-7/Brooklyn-Bridge-Black-And-White-Best-Wallpaper-23387.jpg"), url("http://itcelaya.edu.mx/jornadabioquimica/wp-content/uploads/2019/07/cropped-LOGO-ITC.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover,250 300;
+    -fx-background-position: center;
 
 }
-
+.tool-bar{
+    -fx-background-color: derive(#1d1d1d,50%);
+}
 /*
 .menu-bar
     {
@@ -37,6 +44,23 @@
 }
 
 
+.button {
+    -fx-padding: 5 22 5 22;
+    //-fx-border-color: #e2e2e2;
+    -fx-border-width: 2;
+    -fx-background-radius: 0;
+    //-fx-background-color: #1d1d1d;
+    -fx-background-color: #e2e2e2;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    //-fx-font-size: 11pt;
+    -fx-text-fill: #d8d8d8;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+.button:hover {
+    -fx-background-color: #3a3a3a;
+}
+
 
 
 
@@ -44,6 +68,6 @@
    // -fx-background-image : url("https://www.bbva.com/wp-content/uploads/2018/03/recurso-agujero-negro-BBVA-e1521630497593.jpg");
    -fx-background-image : url("https://2.bp.blogspot.com/-bXrSrE4i-c0/XKWyJK-CPQI/AAAAAAAACLo/pxEZQAK4Dy8sHMuZDt3KzH5zxIZ8Xw9kwCLcBGAs/s1600/agujero-negro.jpg");
     -fx-background-size: cover,auto;
-  /*  -fx-background-repeat: no-repeat;
-//  -fx-background-position: center;*/
+    -fx-background-repeat: no-repeat;
+//  -fx-background-position: center;
 }*/
