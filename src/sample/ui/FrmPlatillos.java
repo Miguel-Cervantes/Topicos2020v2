@@ -26,8 +26,8 @@ public class FrmPlatillos extends Stage {
     }
 
     private void CrearGUI() {
-        txtPlatillo = new TextField("Platillo");
-        txtPrecio = new TextField("Precio");
+        txtPlatillo = new TextField();
+        txtPrecio = new TextField();
         cbxTipo = new ComboBox<>();
         btnGuardar = new Button("Guardar platillo");
         vBox = new VBox();
