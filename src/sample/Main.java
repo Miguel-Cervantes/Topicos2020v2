@@ -31,7 +31,7 @@ public class Main extends Application implements EventHandler<WindowEvent>
     private BorderPane brpPrincipal;
 
     private ToolBar tlbMenu;
-    private Button btnToolbar1,btnToolbar2;
+    private Button btnToolbar1,btnToolbar2,btnToolbar3;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -85,6 +85,10 @@ public class Main extends Application implements EventHandler<WindowEvent>
             btnToolbar2.setOnAction(event -> OpcionMenu(2));
             btnToolbar2.setPrefSize(10,15);
 
+            btnToolbar3=new Button();
+            btnToolbar3.setOnAction(event -> {OpcionMenu(3);});
+            btnToolbar3.setPrefSize(10,15);
+
             // Asignamos la imagen al boton dentro del toolbar
             Image img = new Image("sample/assets/game_control.png");
             ImageView imv = new ImageView(img);
@@ -98,12 +102,18 @@ public class Main extends Application implements EventHandler<WindowEvent>
             imvT.setPreserveRatio(true);
             btnToolbar2.setGraphic(imvT);
 
-            tlbMenu.getItems().addAll(btnToolbar1,btnToolbar2);
+            Image imgR = new Image("sample/assets/icon_rpollo.png");
+            ImageView imvR = new ImageView(imgR);
+            imvR.setFitHeight(15);
+            imvR.setPreserveRatio(true);
+            btnToolbar3.setGraphic(imvR);
+
+            tlbMenu.getItems().addAll(btnToolbar1,btnToolbar2,btnToolbar3);
 
             vPrincipal = new VBox();
             vPrincipal.getChildren().addAll(mnbProyecto,tlbMenu);
             escena = new Scene(vPrincipal,300,275);
-            escena.getStylesheets().add("sample/assets/Main_Style.css");
+            escena.getStylesheets().add("sample/assets/CSS´s/Main_Style.css");
     }
 
 

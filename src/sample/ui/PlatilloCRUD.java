@@ -38,12 +38,13 @@ public class PlatilloCRUD extends Stage {
         vBox=new VBox();
         vBox.getChildren().addAll(tbvPlatillo,btnNuevo);
         escena=new Scene(vBox,300,250);
+        escena.getStylesheets().add("sample/assets/CSS´s/FrmPlatillos.css");
 
     }
 
     private void CrearTabla() {
         TableColumn<PlatillosDAO,Integer> tbcIdPlatillo=new TableColumn<>("ID");
-        tbcIdPlatillo.setPrefWidth(25);
+        tbcIdPlatillo.setPrefWidth(30);
         tbcIdPlatillo.setCellValueFactory(new PropertyValueFactory<>("id_platillo"));
 
         TableColumn<PlatillosDAO,String> tbcNomPlatillo =new TableColumn<>("Nombre Platillo");

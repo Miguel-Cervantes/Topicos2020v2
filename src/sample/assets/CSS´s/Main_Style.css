@@ -4,10 +4,11 @@
     //-fx-background-image: url("http://www.baltana.com/files/wallpapers-7/Brooklyn-Bridge-Black-And-White-Best-Wallpaper-23387.jpg");
     //-fx-background-image: url("https://wallpapercave.com/wp/wp2239287.jpg");
     -fx-background-image: url("https://2.bp.blogspot.com/-bXrSrE4i-c0/XKWyJK-CPQI/AAAAAAAACLo/pxEZQAK4Dy8sHMuZDt3KzH5zxIZ8Xw9kwCLcBGAs/s1600/agujero-negro.jpg");
-    -fx-background-size: cover,auto;
+    -fx-background-size: cover,cover;
 
 }
 
+/*
 .menu-bar
     {
      //-fx-background-color: #e3f2fd;
@@ -15,6 +16,26 @@
        -fx-border-color: #78909c;
        //-fx-border-width: 1;
     }
+*/
+.menu-bar {
+    -fx-background-color: derive(#1d1d1d,20%);
+}
+
+.context-menu {
+    -fx-background-color: derive(#1d1d1d,50%);
+}
+
+.menu-bar .label {
+    -fx-font-size: 11pt;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: white;
+    -fx-opacity: 0.9;
+}
+
+.menu .left-container {
+	-fx-background-color: black;
+}
+
 
 
 

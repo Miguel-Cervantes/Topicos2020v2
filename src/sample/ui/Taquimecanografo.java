@@ -99,7 +99,7 @@ public class Taquimecanografo extends Stage implements EventHandler<KeyEvent> {
         vBoxPrincipal.setSpacing(3);
         vBoxPrincipal.setPadding(new Insets(5));
         escena=new Scene(vBoxPrincipal,565,675);
-        escena.getStylesheets().add("sample/assets/Taqui_Style.css");
+        escena.getStylesheets().add("sample/assets/CSS´s/Taqui_Style.css");
     }
 
     private void CrearHBoxInfo() {
