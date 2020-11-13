@@ -26,13 +26,14 @@ public class FrmPlatillos extends Stage {
     }
 
     private void CrearGUI() {
-        txtPlatillo = new TextField();
-        txtPrecio = new TextField();
+        txtPlatillo = new TextField("Platillo");
+        txtPrecio = new TextField("Precio");
         cbxTipo = new ComboBox<>();
         btnGuardar = new Button("Guardar platillo");
         vBox = new VBox();
+        vBox.setSpacing(5);
         vBox.getChildren().addAll(txtPlatillo, txtPrecio, cbxTipo, btnGuardar);
-        escena=new Scene(vBox,650,750);
+        escena=new Scene(vBox,265,250);
         escena.getStylesheets().add("sample/assets/CSS´s/FrmPlatillos.css");
     }
 
