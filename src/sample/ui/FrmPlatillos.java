@@ -32,7 +32,7 @@ public class FrmPlatillos extends Stage {
         btnGuardar = new Button("Guardar platillo");
         vBox = new VBox();
         vBox.getChildren().addAll(txtPlatillo, txtPrecio, cbxTipo, btnGuardar);
-        escena=new Scene(vBox,250,750);
+        escena=new Scene(vBox,650,750);
         escena.getStylesheets().add("sample/assets/CSS´s/FrmPlatillos.css");
     }
 

@@ -37,7 +37,7 @@ public class PlatilloCRUD extends Stage {
         btnNuevo.setOnAction(event -> {new FrmPlatillos(); });
         vBox=new VBox();
         vBox.getChildren().addAll(tbvPlatillo,btnNuevo);
-        escena=new Scene(vBox,300,250);
+        escena=new Scene(vBox,465,250);
         escena.getStylesheets().add("sample/assets/CSS´s/FrmPlatillos.css");
 
     }

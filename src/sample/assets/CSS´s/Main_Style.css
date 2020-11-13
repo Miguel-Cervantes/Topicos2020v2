@@ -14,6 +14,7 @@
 }
 .tool-bar{
     -fx-background-color: derive(#1d1d1d,50%);
+    -fx-background-position: center;
 }
 /*
 .menu-bar
@@ -45,16 +46,17 @@
 
 
 .button {
-    -fx-padding: 5 22 5 22;
+    //-fx-padding: 5 22 5 22;
+    -fx-padding: 5 20 5 20;
     //-fx-border-color: #e2e2e2;
-    -fx-border-width: 2;
+    //-fx-border-width: 2;
     -fx-background-radius: 0;
     //-fx-background-color: #1d1d1d;
     -fx-background-color: #e2e2e2;
-    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    //-fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
     //-fx-font-size: 11pt;
-    -fx-text-fill: #d8d8d8;
-    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+    //-fx-text-fill: #d8d8d8;
+    //-fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
 
 .button:hover {

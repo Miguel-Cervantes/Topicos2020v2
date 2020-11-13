@@ -79,15 +79,15 @@ public class Main extends Application implements EventHandler<WindowEvent>
             tlbMenu = new ToolBar();
             btnToolbar1 = new Button();
             btnToolbar1.setOnAction(event -> OpcionMenu(1));
-            btnToolbar1.setPrefSize(15,15);
+            btnToolbar1.setPrefSize(15,19);
 
             btnToolbar2=new Button();
             btnToolbar2.setOnAction(event -> OpcionMenu(2));
-            btnToolbar2.setPrefSize(10,15);
+            btnToolbar2.setPrefSize(15,19);
 
             btnToolbar3=new Button();
             btnToolbar3.setOnAction(event -> {OpcionMenu(3);});
-            btnToolbar3.setPrefSize(10,15);
+            btnToolbar3.setPrefSize(15,19);
 
             // Asignamos la imagen al boton dentro del toolbar
             Image img = new Image("sample/assets/game_control.png");
