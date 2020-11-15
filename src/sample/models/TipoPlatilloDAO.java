@@ -1,5 +1,9 @@
 package sample.models;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class TipoPlatilloDAO {
@@ -37,7 +41,26 @@ public class TipoPlatilloDAO {
         }catch (Exception e){e.printStackTrace();}
     }
 
-    public void getAllTipo(){ }
+    public ObservableList<TipoPlatilloDAO> getAllTipo(){
+        ObservableList<TipoPlatilloDAO> listaTP = FXCollections.observableArrayList();
+
+        try {
+            TipoPlatilloDAO objTP;
+            String query ="select * from tbl_tipoplatillo order by dsc_tipo";
+            Statement stmt=Conexion.con.createStatement();
+            ResultSet res= stmt.executeQuery(query);
+            while(res.next()){
+                objTP=new TipoPlatilloDAO();
+                objTP.setId_tipo(res.getInt("id_tipo"));
+                objTP.setDsc_tipo(res.getString("dsc_tipo"));
+                listaTP.add(objTP);
+            }
+
+        }catch (Exception e){e.printStackTrace();}
+        return listaTP;
+    }
+
+
     public void getTipo(){ }
 
 }

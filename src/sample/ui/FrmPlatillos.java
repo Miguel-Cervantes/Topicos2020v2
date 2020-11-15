@@ -30,6 +30,7 @@ public class FrmPlatillos extends Stage {
         txtPrecio = new TextField();
         cbxTipo = new ComboBox<>();
         btnGuardar = new Button("Guardar platillo");
+        btnGuardar.setOnAction(event -> { Guardar();});
         vBox = new VBox();
         vBox.setSpacing(5);
         vBox.getChildren().addAll(txtPlatillo, txtPrecio, cbxTipo, btnGuardar);
