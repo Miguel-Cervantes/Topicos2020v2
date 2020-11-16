@@ -7,6 +7,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import sample.components.ButtonCustomeTP;
 import sample.models.PlatillosDAO;
 import sample.models.TipoPlatilloDAO;
 
