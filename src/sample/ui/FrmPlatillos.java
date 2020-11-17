@@ -17,7 +17,7 @@ public class FrmPlatillos extends Stage {
     private Button btnGuardar;
     private VBox vBox;
     private Scene escena;
-    private PlatillosDAO objPlatillo;
+    private PlatillosDAO objPlatillo;;
 
     public FrmPlatillos() {
         CrearGUI();
@@ -45,5 +45,9 @@ public class FrmPlatillos extends Stage {
         objPlatillo.setPrecio(Float.parseFloat(txtPrecio.getText()));
         objPlatillo.setId_tipo(1);//valor fijo temporalmente para poder hacer la insercion
         objPlatillo.insPlatillo();
+
+        //Pcrud.tbvPlatillo.setItems(objPlatillo.getAllPlatillo());
+        txtPlatillo.clear();
+        txtPrecio.clear();
     }
 }

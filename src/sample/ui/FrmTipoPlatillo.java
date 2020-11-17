@@ -17,6 +17,7 @@ public class FrmTipoPlatillo extends Stage {
     private Scene escena;
     private TipoPlatilloDAO objTipoPlatillo;
 
+
     public FrmTipoPlatillo() {
         CrearGUI();
         this.setTitle("gestion de Tipo Platillos");
@@ -40,5 +41,8 @@ public class FrmTipoPlatillo extends Stage {
         objTipoPlatillo.setDsc_tipo(txtNameTipoPlatillo.getText());
         objTipoPlatillo.setId_tipo(1);
         objTipoPlatillo.insTipo();
+
+
+        txtNameTipoPlatillo.clear();
     }
 }
