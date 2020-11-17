@@ -30,6 +30,7 @@ public class FrmTipoPlatillo extends Stage {
         btnGuardar=new Button("Guardar Tipo Platillo");
         btnGuardar.setOnAction(event -> {Guardar();});
         vBox=new VBox();
+        vBox.setSpacing(5);
         vBox.getChildren().addAll(txtNameTipoPlatillo,btnGuardar);
         escena=new Scene(vBox,265,250);
         escena.getStylesheets().add("sample/assets/CSS´s/FrmTipoPlatillos.css");

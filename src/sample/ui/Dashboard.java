@@ -23,6 +23,7 @@ public class Dashboard extends Stage {
 
     private void CrearGUI() {
         vBox=new VBox();
+        vBox.setSpacing(5);
         btnPlatilloCRUD=new Button("Platillo CRUD");
         btnPlatilloCRUD.setOnAction(event -> {new PlatilloCRUD();});
         btnTipoPlatilloCRUD=new Button("Tipo Platillo CRUD");
@@ -31,7 +32,7 @@ public class Dashboard extends Stage {
 
 
         vBox.getChildren().addAll(btnPlatilloCRUD,btnTipoPlatilloCRUD);
-        escena=new Scene(vBox,200,100);
+        escena=new Scene(vBox,500,200);
         escena.getStylesheets().add("sample/assets/CSS´s/Dashboard.css");
     }
 
