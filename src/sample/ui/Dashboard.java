@@ -24,14 +24,14 @@ public class Dashboard extends Stage {
     private void CrearGUI() {
         vBox=new VBox();
         vBox.setSpacing(5);
-        btnPlatilloCRUD=new Button("Platillo CRUD");
-        btnPlatilloCRUD.setOnAction(event -> {new PlatilloCRUD();});
         btnTipoPlatilloCRUD=new Button("Tipo Platillo CRUD");
         btnTipoPlatilloCRUD.setOnAction(event -> {new TipoPlatilloCRUD();});
+        btnPlatilloCRUD=new Button("Platillo CRUD");
+        btnPlatilloCRUD.setOnAction(event -> {new PlatilloCRUD();});
 
 
 
-        vBox.getChildren().addAll(btnPlatilloCRUD,btnTipoPlatilloCRUD);
+        vBox.getChildren().addAll(btnTipoPlatilloCRUD,btnPlatilloCRUD);
         escena=new Scene(vBox,500,200);
         escena.getStylesheets().add("sample/assets/CSS´s/Dashboard.css");
     }

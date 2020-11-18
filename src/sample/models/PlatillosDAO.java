@@ -25,19 +25,23 @@ public class PlatillosDAO {
         try{
             String query = "INSERT INTO tbl_platillos(nombre_platillo,precio,id_tipo) " +
                     "values('"+nombre_platillo+"',"+precio+","+id_tipo+")";
-            Statement stmt= Conexion.con.createStatement();
+            Statement stmt = Conexion.con.createStatement();
             stmt.executeUpdate(query);
-        }catch (Exception e){e.printStackTrace();}
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 
     public void updPlatillo(){
         try{
-            String query = "UPDATE tbl_platillos SET nombre_platillo = '"+nombre_platillo+"'," +
+            String query = "UPDATE tbl_platillos SET nombre_platillo = '"+nombre_platillo+"', " +
                     "precio = "+precio+", id_tipo = "+id_tipo+" WHERE id_platillo ="+id_platillo;
-            Statement stmt= Conexion.con.createStatement();
+            Statement stmt = Conexion.con.createStatement();
             stmt.executeUpdate(query);
-        }catch (Exception e){e.printStackTrace();}
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 
@@ -46,8 +50,9 @@ public class PlatillosDAO {
             String query = "DELETE FROM tbl_platillos WHERE id_platillo ="+id_platillo;
             Statement stmt = Conexion.con.createStatement();
             stmt.executeUpdate(query);
-
-        }catch (Exception e){e.printStackTrace();}
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 
