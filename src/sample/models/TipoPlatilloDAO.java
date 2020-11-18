@@ -63,4 +63,9 @@ public class TipoPlatilloDAO {
 
     public void getTipo(){ }
 
+    @Override
+    public String toString() {
+        return dsc_tipo;
+    }
+
 }

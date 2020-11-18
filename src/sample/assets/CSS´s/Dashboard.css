@@ -122,11 +122,18 @@
     -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
     -fx-font-size: 10pt;
     -fx-font-weight: bold;
+    //https://developer.mozilla.org/es/docs/Web/CSS/font-weight  (grosor text)
     //-fx-text-fill: #d8d8d8;
     -fx-text-fill: #000000;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
     -fx-pref-width: 140px;
+
 }
+//https://www.cerotec.net/tabla-colores-web   (colores web code)
+//https://www.emprender-facil.com/colores-para-negocios-de-comida/
+//https://code.makery.ch/es/library/javafx-tutorial/part2/  (tableview)
+//https://sodocumentation.net/es/javafx/topic/2229/tableview  (tableview)
+//https://blog.baehost.com/comandos-basicos-para-mysql/ (Comandos MySQL consola)
 
 .button:hover {
     -fx-background-color: #3a3a3a;
