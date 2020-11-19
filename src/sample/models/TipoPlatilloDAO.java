@@ -17,7 +17,7 @@ public class TipoPlatilloDAO {
 
     public void insTipo(){
         try{
-            String query = "INSERT INTO tbl_tipoplatillo (desc_tipo) VALUES('"+dsc_tipo+"')";
+            String query = "INSERT INTO tbl_tipoplatillo (dsc_tipo) VALUES('"+dsc_tipo+"')";
             Statement stmt = Conexion.con.createStatement();
             stmt.executeUpdate(query);
         }catch(Exception e){
@@ -27,7 +27,7 @@ public class TipoPlatilloDAO {
 
     public void upTipo() {//Siempre un where para que sea un solo registro modoficado y no todos tambien el de delete
         try{
-            String query = "UPDATE tbl_tipoplatillo SET desc_tipo = '"+dsc_tipo+"' WHERE id_tipo = "+id_tipo;
+            String query = "UPDATE tbl_tipoplatillo SET dsc_tipo = '"+dsc_tipo+"' WHERE id_tipo = "+id_tipo;
             Statement stmt = Conexion.con.createStatement();
             stmt.executeUpdate(query);
         }catch (Exception e){

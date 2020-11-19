@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableCell;
 import sample.models.TipoPlatilloDAO;
+import sample.ui.FrmTipoPlatillo;
 
 import java.util.Optional;
 
@@ -16,9 +17,13 @@ public class ButtonCustomeTP extends TableCell<TipoPlatilloDAO,String> {
     public ButtonCustomeTP(int opc){
         if (opc == 1){
             btnCeldaTP = new Button("Editar");
+            btnCeldaTP.setOnAction(event -> {
+                objTPlatillo=ButtonCustomeTP.this.getTableView().getItems().get(ButtonCustomeTP.this.getIndex());
+                new FrmTipoPlatillo(ButtonCustomeTP.this.getTableView(),objTPlatillo);
+            });
 
         }else{
-            btnCeldaTP = new Button("Borrar");}
+            btnCeldaTP = new Button("Borrar");
             btnCeldaTP.setOnAction(event -> {
 
                 Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
@@ -35,6 +40,7 @@ public class ButtonCustomeTP extends TableCell<TipoPlatilloDAO,String> {
                 }
 
             });
+        }
     }
 
 

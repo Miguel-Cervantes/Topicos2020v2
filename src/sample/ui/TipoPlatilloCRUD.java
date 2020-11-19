@@ -34,7 +34,7 @@ public class TipoPlatilloCRUD extends Stage {
         tbvTipoPlatillo=new TableView<>();
         CrearTabla();
         btnNuevo=new Button("Nuevo Tipo de Platillo");
-        btnNuevo.setOnAction(event -> {new FrmTipoPlatillo();});
+        btnNuevo.setOnAction(event -> {new FrmTipoPlatillo(tbvTipoPlatillo,null);});
         vBox=new VBox();
         vBox.getChildren().addAll(tbvTipoPlatillo,btnNuevo);
         escena=new Scene(vBox,465,250);

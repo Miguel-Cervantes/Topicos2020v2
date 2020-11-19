@@ -30,7 +30,6 @@ public class Dashboard extends Stage {
         btnPlatilloCRUD.setOnAction(event -> {new PlatilloCRUD();});
 
 
-
         vBox.getChildren().addAll(btnTipoPlatilloCRUD,btnPlatilloCRUD);
         escena=new Scene(vBox,500,200);
         escena.getStylesheets().add("sample/assets/CSS´s/Dashboard.css");

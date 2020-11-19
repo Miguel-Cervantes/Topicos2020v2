@@ -1,17 +1,17 @@
 .root{
-     //-fx-background-color: #1d1d1d;
-     -fx-background-color: #B8860B;
+     -fx-background-color: #1d1d1d;
+     //-fx-background-color: #B8860B;
 
-     //-fx-border-color: #1d1d1d;
-     -fx-border-color: #B8860B;
+     -fx-border-color: #1d1d1d;
+     //-fx-border-color: #B8860B;
      -fx-border-width: 7 ;
 
 
 }
 .background {
-    //-fx-background-color: #1d1d1d;
+    -fx-background-color: #1d1d1d;
 
-    -fx-background-color: #B8860B;
+    //-fx-background-color: #B8860B;
 }
 
 .label {
@@ -117,14 +117,14 @@
     //-fx-border-width: 0;
     //-fx-background-radius: 0;
     -fx-background-radius: 1;
-    //-fx-background-color: #1d1d1d;
-    -fx-background-color: #B8860B;
+    -fx-background-color: #1d1d1d;
+    //-fx-background-color: #B8860B;
     -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
     -fx-font-size: 10pt;
     -fx-font-weight: bold;
     //https://developer.mozilla.org/es/docs/Web/CSS/font-weight  (grosor text)
-    //-fx-text-fill: #d8d8d8;
-    -fx-text-fill: #000000;
+    -fx-text-fill: #d8d8d8;
+    //-fx-text-fill: #000000;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
     -fx-pref-width: 140px;
 

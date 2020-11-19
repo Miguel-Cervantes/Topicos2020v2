@@ -23,17 +23,9 @@ public class FrmPlatillos extends Stage {
     public FrmPlatillos(TableView<PlatillosDAO> tbvPlatillos,PlatillosDAO objPlatillo) {
 
         if(objPlatillo!=null){
-            this.objPlatillo=objPlatillo;
-            opc=1;
-            System.out.println("objetoPlatillo lleno");
-
+            this.objPlatillo=objPlatillo; opc=1;
         }else{
-
-            System.out.println(objPlatillo+"///");
-            this.objPlatillo=new PlatillosDAO();
-            opc=2;
-            System.out.println(objPlatillo+"///");
-            //System.out.println("objetoPlatillo null");
+            this.objPlatillo=new PlatillosDAO(); opc=2;
         }
 
         CrearGUI();
@@ -65,16 +57,14 @@ public class FrmPlatillos extends Stage {
 
     private void Guardar(){
 
-            objPlatillo.setNombre_platillo(txtPlatillo.getText());
-            objPlatillo.setPrecio(Float.parseFloat(txtPrecio.getText()));
-            objPlatillo.setId_tipo(1);//valor fijo temporalmente para poder hacer la insercion
+        objPlatillo.setNombre_platillo(txtPlatillo.getText());
+        objPlatillo.setPrecio(Float.parseFloat(txtPrecio.getText()));
+        objPlatillo.setId_tipo(1);//valor fijo temporalmente para poder hacer la insercion
 
-        if(opc!=1) {//PROCESO PLATILLO NUEVO
+        if(opc!=1) {                            //PROCESO PLATILLO NUEVO
             objPlatillo.insPlatillo();
-            System.out.println("PROCESO PLATILLO NUEVO");
-        }else{                  //PROCESO PARA ACTUALIZAR EL PLATILLO
+        }else{                                  //PROCESO PARA ACTUALIZAR EL PLATILLO
             objPlatillo.updPlatillo();
-            System.out.println("PROCESO PARA ACTUALIZAR EL PLATILLO");
         }
 
         tbvPlatillos.setItems(objPlatillo.getAllPlatillo());
