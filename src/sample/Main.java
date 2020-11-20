@@ -12,6 +12,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import sample.components.Hilo;
 import sample.models.Conexion;
 import sample.ui.Dashboard;
 import sample.ui.Memorama;
@@ -43,6 +44,13 @@ public class Main extends Application implements EventHandler<WindowEvent>
         primaryStage.show();
 
         Conexion.CrearConexion();
+        new Hilo("Sonic").start();
+        new Hilo("Flash").start();
+        new Hilo("Super Man").start();
+        new Hilo("Meteoro").start();
+        new Hilo("QuickSilver").start();
+
+
         }
         private void CrearUI() {
         mnbProyecto= new MenuBar();
@@ -112,9 +120,9 @@ public class Main extends Application implements EventHandler<WindowEvent>
 
             vPrincipal = new VBox();
             vPrincipal.getChildren().addAll(mnbProyecto,tlbMenu);
-            //escena = new Scene(vPrincipal,300,275);
+            escena = new Scene(vPrincipal,300,275);
             //escena = new Scene(vPrincipal,1360,700);
-            escena = new Scene(vPrincipal,1160,500);
+            //escena = new Scene(vPrincipal,1160,500);
             escena.getStylesheets().add("sample/assets/CSS´s/Main_Style.css");
     }
 
