@@ -44,11 +44,11 @@ public class Main extends Application implements EventHandler<WindowEvent>
         primaryStage.show();
 
         Conexion.CrearConexion();
-        new Hilo("Sonic").start();
+        /*new Hilo("Sonic").start();
         new Hilo("Flash").start();
         new Hilo("Super Man").start();
         new Hilo("Meteoro").start();
-        new Hilo("QuickSilver").start();
+        new Hilo("QuickSilver").start();*/
 
 
         }

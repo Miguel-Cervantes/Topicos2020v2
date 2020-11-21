@@ -9,9 +9,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import sample.components.ButtonCustome;
 import sample.components.ButtonCustomeTP;
-import sample.models.PlatillosDAO;
 import sample.models.TipoPlatilloDAO;
 
 public class TipoPlatilloCRUD extends Stage {
