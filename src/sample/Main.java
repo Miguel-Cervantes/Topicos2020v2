@@ -16,6 +16,7 @@ import sample.components.Hilo;
 import sample.models.Conexion;
 import sample.ui.Dashboard;
 import sample.ui.Memorama;
+import sample.ui.Pista;
 import sample.ui.Taquimecanografo;
 
 //repositorio
@@ -49,6 +50,7 @@ public class Main extends Application implements EventHandler<WindowEvent>
         new Hilo("Super Man").start();
         new Hilo("Meteoro").start();
         new Hilo("QuickSilver").start();*/
+        new Pista();
 
 
         }
@@ -123,7 +125,7 @@ public class Main extends Application implements EventHandler<WindowEvent>
             escena = new Scene(vPrincipal,300,275);
             //escena = new Scene(vPrincipal,1360,700);
             //escena = new Scene(vPrincipal,1160,500);
-            escena.getStylesheets().add("sample/assets/CSS´s/Main_Style.css");
+            //escena.getStylesheets().add("sample/assets/CSS´s/Main_Style.css");
     }
 
 
